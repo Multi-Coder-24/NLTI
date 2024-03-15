@@ -46,6 +46,7 @@ public class MessageListener
                     case "Steal" ->{Steal.Trigger(User,Channel);}
                     case "Snatch" ->{Snatch.Trigger(User,Channel);}
                     case "Food" ->{Food.Trigger(User,Channel);}
+                    case "Night" ->{NightTime.Trigger(User,Channel);}
                 }
             }
         }

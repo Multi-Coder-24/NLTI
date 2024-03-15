@@ -29,6 +29,8 @@ public class CooldownManager
     public static LocalDateTime STEAL;
     public static LocalDateTime SNATCH;
     public static LocalDateTime FOOD;
+    public static LocalDateTime NIGHT_TIME;
+    public static LocalDateTime DAY_TIME;
 
     public static void Init()
     {
@@ -58,5 +60,7 @@ public class CooldownManager
         STEAL = Now;
         SNATCH = Now;
         FOOD = Now;
+        NIGHT_TIME = Now;
+        DAY_TIME = Now;
     }
 }

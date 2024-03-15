@@ -12,6 +12,7 @@ import java.util.List;
 
 public class NLTIConfig
 {
+    public String Token;
     //  Mob Spawn Cooldowns
     public int[] Creeper;
     public int[] Skeleton;
@@ -40,6 +41,8 @@ public class NLTIConfig
     public int[] Steal;
     public int[] Snatch;
     public int[] Food;
+    public int[] Night;
+    public int[] Day;
     //  Properties
     public boolean ChaosMode;
     public String[] Users;
@@ -49,6 +52,9 @@ public class NLTIConfig
         //  Loading JsonReader Data into JsonObject
         Gson G = new Gson();
         JsonObject Object = G.fromJson(reader, TypeToken.get(JsonObject.class));
+
+        //  Read Token
+        Token = Object.get("Token").getAsString();
 
         //  Saving Config Vars
         JsonArray Arr = Object.getAsJsonArray("Usernames");
@@ -182,5 +188,15 @@ public class NLTIConfig
         List<Integer> L24 = new ArrayList<>();
         Arr.forEach(e ->{L24.add(e.getAsInt());});
         Food = ArrayUtils.toPrimitive(L24.toArray(new Integer[0]));
+
+        Arr = Object.getAsJsonArray("NightCooldown");
+        List<Integer> L25 = new ArrayList<>();
+        Arr.forEach(e ->{L25.add(e.getAsInt());});
+        Night = ArrayUtils.toPrimitive(L25.toArray(new Integer[0]));
+
+        Arr = Object.getAsJsonArray("DayCooldown");
+        List<Integer> L26 = new ArrayList<>();
+        Arr.forEach(e ->{L26.add(e.getAsInt());});
+        Day = ArrayUtils.toPrimitive(L26.toArray(new Integer[0]));
     }
 }

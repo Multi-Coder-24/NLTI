@@ -7,7 +7,7 @@
 	"authors": [
 		"Multicoder"
 	],
-	"license": "All Rights Reserved",
+	"license": "LGPLv3",
 	"environment": "*",
 	"entrypoints": {
 		"main": [

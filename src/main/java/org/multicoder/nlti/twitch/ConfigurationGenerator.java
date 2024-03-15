@@ -2,6 +2,7 @@ package org.multicoder.nlti.twitch;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonWriter;
 
@@ -12,14 +13,6 @@ import java.util.Properties;
 
 public class ConfigurationGenerator
 {
-    public static void CreateConfig(String Path) throws Exception
-    {
-        Properties Prop = new Properties();
-        Prop.put("token","**");
-        Prop.put("username","***");
-        OutputStream Stream = new FileOutputStream(Path);
-        Prop.store(Stream,"NLTI Configuration");
-    }
     public static void CreateJSONConfig(String Path) throws Exception
     {
         JsonObject Data = new JsonObject();
@@ -35,6 +28,7 @@ public class ConfigurationGenerator
         UtilCooldown.add(40);
         Usernames.add("examplename");
         Usernames.add("collaborator");
+        Data.addProperty("Token","**");
         Data.add("Usernames",Usernames);
         Data.addProperty("ChaosMode",false);
         Data.add("CreeperCooldown",SpawnCooldown);
@@ -62,6 +56,8 @@ public class ConfigurationGenerator
         Data.add("StealCooldown",UtilCooldown);
         Data.add("SnatchCooldown",UtilCooldown);
         Data.add("FoodCooldown",UtilCooldown);
+        Data.add("NightCooldown",SpawnCooldown);
+        Data.add("DayCooldown",SpawnCooldown);
         JsonWriter WriterJ = new JsonWriter(new FileWriter(Path));
         Gson Obj = new Gson();
         Obj.toJson(Data,WriterJ);

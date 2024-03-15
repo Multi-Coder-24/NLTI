@@ -26,28 +26,18 @@ public class MulticoderTwitchConnection
     public MulticoderTwitchConnection(MinecraftServer server) throws Exception
     {
         Enabled = false;
-        String Properties = server.getRunDirectory().getAbsolutePath() + "/nlti.properties";
         String ConfigPath = server.getRunDirectory().getAbsolutePath() + "/nlti-config.json";
-        File F = new File(Properties);
         File JF = new File(ConfigPath);
-        if(!F.exists())
-        {
-            ConfigurationGenerator.CreateConfig(Properties);
-        }
         if(!JF.exists())
         {
             ConfigurationGenerator.CreateJSONConfig(ConfigPath);
         }
         else
         {
-            InputStream Stream = new FileInputStream(Properties);
-            java.util.Properties P = new Properties();
-            P.load(Stream);
             SERVER = server;
-            Token = P.getProperty("token");
             JsonReader Reader = new JsonReader(new FileReader(ConfigPath));
             Config = new NLTIConfig(Reader);
-            CLIENT = TwitchClientBuilder.builder().withEnableHelix(true).withEnableChat(true).withChatAccount(new OAuth2Credential("twitch", P.getProperty("token"))).build();
+            CLIENT = TwitchClientBuilder.builder().withEnableHelix(true).withEnableChat(true).withChatAccount(new OAuth2Credential("twitch", Config.Token)).build();
             CHAT = CLIENT.getChat();
             CHAT.connect();
             for(String User : Config.Users)
