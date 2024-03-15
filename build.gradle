@@ -1,0 +1,106 @@
+plugins {
+	id 'fabric-loom' version '1.3-SNAPSHOT'
+	id 'maven-publish'
+}
+version = project.mod_version
+group = project.maven_group
+base {
+	archivesName = "NLTI-Fabric-1.20.2"
+}
+repositories {
+	maven {url "https://maven.awakenedredstone.com"}
+}
+loom {
+    splitEnvironmentSourceSets()
+	mods {
+		"modid" {
+			sourceSet sourceSets.main
+			sourceSet sourceSets.client
+		}
+	}
+
+}
+dependencies {
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+	include modApi("com.github.twitch4j:twitch4j:${project.library_version}")
+	include "com.github.twitch4j:twitch4j-auth:${project.library_version}"
+	include "com.github.twitch4j:twitch4j-chat:${project.library_version}"
+	include "com.github.twitch4j:twitch4j-client-websocket:${project.library_version}"
+	include "com.github.twitch4j:twitch4j-common:${project.library_version}"
+	include "com.github.twitch4j:twitch4j-eventsub-common:${project.library_version}"
+	include "com.github.twitch4j:twitch4j-eventsub-websocket:${project.library_version}"
+	include "com.github.twitch4j:twitch4j-extensions:${project.library_version}"
+	include "com.github.twitch4j:twitch4j-graphql:${project.library_version}"
+	include "com.github.twitch4j:twitch4j-helix:${project.library_version}"
+	include "com.github.twitch4j:twitch4j-kraken:${project.library_version}"
+	include "com.github.twitch4j:twitch4j-messaginginterface:${project.library_version}"
+	include "com.github.twitch4j:twitch4j-pubsub:${project.library_version}"
+	include "com.github.twitch4j:twitch4j-util:${project.library_version}"
+
+	include "com.apollographql.apollo:apollo-api-jvm:2.5.14"
+	include "com.apollographql.apollo:apollo-http-cache-api:2.5.14"
+	include "com.apollographql.apollo:apollo-normalized-cache-api-jvm:2.5.14"
+	include "com.apollographql.apollo:apollo-normalized-cache-jvm:2.5.14"
+	include "com.apollographql.apollo:apollo-runtime:2.5.14"
+	include "com.benasher44:uuid-jvm:0.2.0"
+	include "com.bucket4j:bucket4j_jdk8-core:8.7.0"
+	include "com.fasterxml.jackson.core:jackson-annotations:2.16.1"
+	include "com.fasterxml.jackson.core:jackson-core:2.16.1"
+	include "com.fasterxml.jackson.core:jackson-databind:2.16.1"
+	include "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.16.1"
+	include "com.fasterxml.jackson:jackson-bom:2.16.1"
+	include "com.github.ben-manes.caffeine:caffeine:2.9.3"
+	include "com.github.philippheuer.credentialmanager:credentialmanager:0.3.0"
+	include "com.github.philippheuer.events4j:events4j-api:0.12.1"
+	include "com.github.philippheuer.events4j:events4j-bom:0.12.1"
+	include "com.github.philippheuer.events4j:events4j-core:0.12.1"
+	include "com.github.philippheuer.events4j:events4j-handler-simple:0.12.1"
+	include "com.github.tony19:named-regexp:0.2.8"
+	include "com.google.errorprone:error_prone_annotations:2.10.0"
+	include "com.neovisionaries:nv-websocket-client:2.14"
+	include "com.netflix.archaius:archaius-core:0.4.1"
+	include "com.netflix.hystrix:hystrix-core:1.5.18"
+	include "com.nytimes.android:cache:2.0.2"
+	include "com.squareup.okhttp3:okhttp:4.12.0"
+	include "com.squareup.okio:okio-jvm:3.6.0"
+	include "commons-configuration:commons-configuration:1.10"
+	include "commons-lang:commons-lang:2.6"
+	include "io.github.openfeign:feign-core:13.1"
+	include "io.github.openfeign:feign-hystrix:13.1"
+	include "io.github.openfeign:feign-jackson:13.1"
+	include "io.github.openfeign:feign-okhttp:13.1"
+	include "io.github.openfeign:feign-slf4j:13.1"
+	include "io.github.xanthic.cache:cache-api:0.5.0"
+	include "io.github.xanthic.cache:cache-core:0.5.0"
+	include "io.github.xanthic.cache:cache-provider-caffeine:0.5.0"
+	include "io.reactivex:rxjava:1.2.0"
+	include "net.fabricmc:fabric-language-kotlin:1.10.10+kotlin.1.9.10"
+	include "org.hdrhistogram:HdrHistogram:2.1.9"
+
+}
+processResources {
+	inputs.property "version", project.version
+
+	filesMatching("fabric.mod.json") {
+		expand "version": project.version
+	}
+}
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 17
+}
+java {
+	withSourcesJar()
+
+	sourceCompatibility = JavaVersion.VERSION_17
+	targetCompatibility = JavaVersion.VERSION_17
+}
+jar {
+	from("LICENSE") {
+		rename { "${it}_${project.base.archivesName.get()}"}
+	}
+}
+

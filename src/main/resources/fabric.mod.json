@@ -1,0 +1,23 @@
+{
+	"schemaVersion": 1,
+	"id": "nlti",
+	"version": "2.0.0",
+	"name": "Next Level Twitch Integration",
+	"description": "Bridges Minecraft and Twitch in a fun unique way",
+	"authors": [
+		"Multicoder"
+	],
+	"license": "All Rights Reserved",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"org.multicoder.nlti.NLTI"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.14.21",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	}
+}
