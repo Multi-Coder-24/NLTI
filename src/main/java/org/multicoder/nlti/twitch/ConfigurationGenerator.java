@@ -58,6 +58,17 @@ public class ConfigurationGenerator
         Data.add("FoodCooldown",UtilCooldown);
         Data.add("NightCooldown",SpawnCooldown);
         Data.add("DayCooldown",SpawnCooldown);
+        Data.add("HealthD",UtilCooldown);
+        Data.add("HealthP",UtilCooldown);
+        Data.add("Speed25",UtilCooldown);
+        Data.add("Speed50",UtilCooldown);
+        Data.add("Speed100",UtilCooldown);
+        Data.add("Speed150",UtilCooldown);
+        Data.add("Speed200",UtilCooldown);
+        Data.add("Hungry",UtilCooldown);
+        Data.add("Thunder",UtilCooldown);
+        Data.add("Rain",UtilCooldown);
+        Data.add("Clear",UtilCooldown);
         JsonWriter WriterJ = new JsonWriter(new FileWriter(Path));
         Gson Obj = new Gson();
         Obj.toJson(Data,WriterJ);

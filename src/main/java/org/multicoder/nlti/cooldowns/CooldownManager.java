@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 public class CooldownManager
 {
+    //  Mob Commands
     public static LocalDateTime CREEPER;
     public static LocalDateTime SKELETON;
     public static LocalDateTime ZOMBIE;
@@ -15,6 +16,7 @@ public class CooldownManager
     public static LocalDateTime PILLAGER;
     public static LocalDateTime PIGLIN;
     public static LocalDateTime STRAY;
+    //  Potion Commands
     public static LocalDateTime POISON;
     public static LocalDateTime HUNGER;
     public static LocalDateTime WEAKNESS;
@@ -26,11 +28,25 @@ public class CooldownManager
     public static LocalDateTime HASTE;
     public static LocalDateTime RESISTANCE;
     public static LocalDateTime NIGHTVISION;
+    //  Player Commands
     public static LocalDateTime STEAL;
     public static LocalDateTime SNATCH;
     public static LocalDateTime FOOD;
+    public static LocalDateTime HEALTH_D;
+    public static LocalDateTime HEALTH_P;
+    public static LocalDateTime SPEED25;
+    public static LocalDateTime SPEED50;
+    public static LocalDateTime SPEED100;
+    public static LocalDateTime SPEED150;
+    public static LocalDateTime SPEED200;
+    public static LocalDateTime HUNGRY;
+    //  World Commands
     public static LocalDateTime NIGHT_TIME;
     public static LocalDateTime DAY_TIME;
+    public static LocalDateTime THUNDER;
+    public static LocalDateTime RAIN;
+    public static LocalDateTime CLEAR;
+
 
     public static void Init()
     {
@@ -62,5 +78,16 @@ public class CooldownManager
         FOOD = Now;
         NIGHT_TIME = Now;
         DAY_TIME = Now;
+        HEALTH_D = Now;
+        HEALTH_P = Now;
+        SPEED25 = Now;
+        SPEED50 = Now;
+        SPEED100 = Now;
+        SPEED150 = Now;
+        SPEED200 = Now;
+        HUNGRY = Now;
+        THUNDER = Now;
+        RAIN = Now;
+        CLEAR = Now;
     }
 }

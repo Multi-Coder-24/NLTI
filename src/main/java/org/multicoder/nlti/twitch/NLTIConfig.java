@@ -43,6 +43,17 @@ public class NLTIConfig
     public int[] Food;
     public int[] Night;
     public int[] Day;
+    public int[] HealthD;
+    public int[] HealthP;
+    public int[] Speed25;
+    public int[] Speed50;
+    public int[] Speed100;
+    public int[] Speed150;
+    public int[] Speed200;
+    public int[] Hungry;
+    public int[] Thunder;
+    public int[] Rain;
+    public int[] Clear;
     //  Properties
     public boolean ChaosMode;
     public String[] Users;
@@ -65,138 +76,194 @@ public class NLTIConfig
 
         //  Retrieving Cooldowns
         Arr = Object.getAsJsonArray("CreeperCooldown");
-        List<Integer> L0 = new ArrayList<>();
-        Arr.forEach(e ->{L0.add(e.getAsInt());});
-        Creeper = ArrayUtils.toPrimitive(L0.toArray(new Integer[0]));
+        List<Integer> L = new ArrayList<>();
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Creeper = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
 
         Arr = Object.getAsJsonArray("SkeletonCooldown");
-        List<Integer> L1 = new ArrayList<>();
-        Arr.forEach(e ->{L1.add(e.getAsInt());});
-        Skeleton = ArrayUtils.toPrimitive(L1.toArray(new Integer[0]));
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Skeleton = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
 
         Arr = Object.getAsJsonArray("ZombieCooldown");
-        List<Integer> L2 = new ArrayList<>();
-        Arr.forEach(e ->{L2.add(e.getAsInt());});
-        Zombie = ArrayUtils.toPrimitive(L2.toArray(new Integer[0]));
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Zombie = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
 
         Arr = Object.getAsJsonArray("EndermanCooldown");
-        List<Integer> L3 = new ArrayList<>();
-        Arr.forEach(e ->{L3.add(e.getAsInt());});
-        Enderman = ArrayUtils.toPrimitive(L3.toArray(new Integer[0]));
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Enderman = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
 
         Arr = Object.getAsJsonArray("SpiderCooldown");
-        List<Integer> L4 = new ArrayList<>();
-        Arr.forEach(e ->{L4.add(e.getAsInt());});
-        Spider = ArrayUtils.toPrimitive(L4.toArray(new Integer[0]));
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Spider = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
 
         Arr = Object.getAsJsonArray("WitchCooldown");
-        List<Integer> L5 = new ArrayList<>();
-        Arr.forEach(e ->{L5.add(e.getAsInt());});
-        Witch = ArrayUtils.toPrimitive(L5.toArray(new Integer[0]));
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Witch = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
 
         Arr = Object.getAsJsonArray("VindicatorCooldown");
-        List<Integer> L6 = new ArrayList<>();
-        Arr.forEach(e ->{L6.add(e.getAsInt());});
-        Vindicator = ArrayUtils.toPrimitive(L6.toArray(new Integer[0]));
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Vindicator = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
 
         Arr = Object.getAsJsonArray("HuskCooldown");
-        List<Integer> L7 = new ArrayList<>();
-        Arr.forEach(e ->{L7.add(e.getAsInt());});
-        Husk = ArrayUtils.toPrimitive(L7.toArray(new Integer[0]));
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Husk = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
 
         Arr = Object.getAsJsonArray("PillagerCooldown");
-        List<Integer> L8 = new ArrayList<>();
-        Arr.forEach(e ->{L8.add(e.getAsInt());});
-        Pillager = ArrayUtils.toPrimitive(L8.toArray(new Integer[0]));
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Pillager = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
 
         Arr = Object.getAsJsonArray("PiglinCooldown");
-        List<Integer> L9 = new ArrayList<>();
-        Arr.forEach(e ->{L9.add(e.getAsInt());});
-        Piglin = ArrayUtils.toPrimitive(L9.toArray(new Integer[0]));
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Piglin = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
 
         Arr = Object.getAsJsonArray("StrayCooldown");
-        List<Integer> L10 = new ArrayList<>();
-        Arr.forEach(e ->{L10.add(e.getAsInt());});
-        Stray = ArrayUtils.toPrimitive(L10.toArray(new Integer[0]));
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Stray = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
 
         Arr = Object.getAsJsonArray("PoisonCooldown");
-        List<Integer> L11 = new ArrayList<>();
-        Arr.forEach(e ->{L11.add(e.getAsInt());});
-        Poison = ArrayUtils.toPrimitive(L11.toArray(new Integer[0]));
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Poison = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
 
         Arr = Object.getAsJsonArray("HungerCooldown");
-        List<Integer> L12 = new ArrayList<>();
-        Arr.forEach(e ->{L12.add(e.getAsInt());});
-        Hunger = ArrayUtils.toPrimitive(L12.toArray(new Integer[0]));
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Hunger = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
 
         Arr = Object.getAsJsonArray("WeaknessCooldown");
-        List<Integer> L13 = new ArrayList<>();
-        Arr.forEach(e ->{L13.add(e.getAsInt());});
-        Weakness = ArrayUtils.toPrimitive(L13.toArray(new Integer[0]));
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Weakness = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
 
         Arr = Object.getAsJsonArray("BlindCooldown");
-        List<Integer> L14 = new ArrayList<>();
-        Arr.forEach(e ->{L14.add(e.getAsInt());});
-        Blindness = ArrayUtils.toPrimitive(L14.toArray(new Integer[0]));
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Blindness = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
 
         Arr = Object.getAsJsonArray("SlowCooldown");
-        List<Integer> L15 = new ArrayList<>();
-        Arr.forEach(e ->{L15.add(e.getAsInt());});
-        Slowness = ArrayUtils.toPrimitive(L15.toArray(new Integer[0]));
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Slowness = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
 
         Arr = Object.getAsJsonArray("RegenCooldown");
-        List<Integer> L16 = new ArrayList<>();
-        Arr.forEach(e ->{L16.add(e.getAsInt());});
-        Regeneration = ArrayUtils.toPrimitive(L16.toArray(new Integer[0]));
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Regeneration = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
 
         Arr = Object.getAsJsonArray("StrengthCooldown");
-        List<Integer> L17 = new ArrayList<>();
-        Arr.forEach(e ->{L17.add(e.getAsInt());});
-        Strength = ArrayUtils.toPrimitive(L17.toArray(new Integer[0]));
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Strength = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
 
         Arr = Object.getAsJsonArray("SpeedCooldown");
-        List<Integer> L18 = new ArrayList<>();
-        Arr.forEach(e ->{L18.add(e.getAsInt());});
-        Speed = ArrayUtils.toPrimitive(L18.toArray(new Integer[0]));
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Speed = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
 
         Arr = Object.getAsJsonArray("HasteCooldown");
-        List<Integer> L19 = new ArrayList<>();
-        Arr.forEach(e ->{L19.add(e.getAsInt());});
-        Haste = ArrayUtils.toPrimitive(L19.toArray(new Integer[0]));
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Haste = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
 
         Arr = Object.getAsJsonArray("ResistanceCooldown");
-        List<Integer> L20 = new ArrayList<>();
-        Arr.forEach(e ->{L20.add(e.getAsInt());});
-        Resistance = ArrayUtils.toPrimitive(L20.toArray(new Integer[0]));
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Resistance = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
 
         Arr = Object.getAsJsonArray("NightVisionCooldown");
-        List<Integer> L21 = new ArrayList<>();
-        Arr.forEach(e ->{L21.add(e.getAsInt());});
-        NightVision = ArrayUtils.toPrimitive(L21.toArray(new Integer[0]));
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        NightVision = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
 
         Arr = Object.getAsJsonArray("StealCooldown");
-        List<Integer> L22 = new ArrayList<>();
-        Arr.forEach(e ->{L22.add(e.getAsInt());});
-        Steal = ArrayUtils.toPrimitive(L22.toArray(new Integer[0]));
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Steal = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
 
         Arr = Object.getAsJsonArray("SnatchCooldown");
-        List<Integer> L23 = new ArrayList<>();
-        Arr.forEach(e ->{L23.add(e.getAsInt());});
-        Snatch = ArrayUtils.toPrimitive(L23.toArray(new Integer[0]));
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Snatch = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
 
         Arr = Object.getAsJsonArray("FoodCooldown");
-        List<Integer> L24 = new ArrayList<>();
-        Arr.forEach(e ->{L24.add(e.getAsInt());});
-        Food = ArrayUtils.toPrimitive(L24.toArray(new Integer[0]));
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Food = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
 
         Arr = Object.getAsJsonArray("NightCooldown");
-        List<Integer> L25 = new ArrayList<>();
-        Arr.forEach(e ->{L25.add(e.getAsInt());});
-        Night = ArrayUtils.toPrimitive(L25.toArray(new Integer[0]));
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Night = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
 
         Arr = Object.getAsJsonArray("DayCooldown");
-        List<Integer> L26 = new ArrayList<>();
-        Arr.forEach(e ->{L26.add(e.getAsInt());});
-        Day = ArrayUtils.toPrimitive(L26.toArray(new Integer[0]));
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Day = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
+
+        Arr = Object.getAsJsonArray("HealthD");
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        HealthD = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
+
+        Arr = Object.getAsJsonArray("HealthP");
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        HealthP = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
+
+        Arr = Object.getAsJsonArray("Speed25");
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Speed25 = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
+
+        Arr = Object.getAsJsonArray("Speed50");
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Speed50 = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
+
+        Arr = Object.getAsJsonArray("Speed100");
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Speed100 = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
+
+        Arr = Object.getAsJsonArray("Speed150");
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Speed150 = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
+
+        Arr = Object.getAsJsonArray("Speed200");
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Speed200 = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
+
+        Arr = Object.getAsJsonArray("Hungry");
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Hungry = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
+
+        Arr = Object.getAsJsonArray("Thunder");
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Thunder = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
+
+        Arr = Object.getAsJsonArray("Rain");
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Rain = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
+
+        Arr = Object.getAsJsonArray("Clear");
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Clear = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
     }
 }

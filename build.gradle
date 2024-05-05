@@ -80,9 +80,7 @@ dependencies {
 	include "io.reactivex:rxjava:1.2.0"
 	include "net.fabricmc:fabric-language-kotlin:1.10.10+kotlin.1.9.10"
 	include "org.hdrhistogram:HdrHistogram:2.1.9"
-	include "org.apache.logging.log4j:log4j-core:2.23.1"
-	include "org.apache.logging.log4j:log4j-api:2.23.1"
-
+	include "commons-logging:commons-logging:1.2"
 }
 processResources {
 	inputs.property "version", project.version
