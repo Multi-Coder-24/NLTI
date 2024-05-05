@@ -3,6 +3,7 @@ package org.multicoder.nlti.commands.mob;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.mob.SkeletonEntity;
 import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.math.BlockPos;
 import org.multicoder.nlti.cooldowns.CooldownManager;
 import org.multicoder.nlti.twitch.MulticoderTwitchConnection;
@@ -34,6 +35,7 @@ public class Skeleton
                 BlockPos Position = player.getBlockPos();
                 Position.add(2,2,2);
                 SkeletonEntity C = new SkeletonEntity(EntityType.SKELETON,player.getServerWorld());
+                C.setCustomName(Text.literal(Username).formatted(Formatting.BOLD));
                 C.setPosition(Position.toCenterPos());
                 player.getServerWorld().spawnEntity(C);
             });

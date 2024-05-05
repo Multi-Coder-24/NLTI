@@ -51,6 +51,7 @@ public class CommandParser
                 case "weatherrain" -> Rain.Trigger(User,Channel);
                 case "weatherthunder" -> Thunder.Trigger(User,Channel);
                 case "weatherclear" -> Clear.Trigger(User,Channel);
+                case "spoonie" -> Cake.Trigger(User,Channel);
             }
         }
         else{
@@ -94,6 +95,7 @@ public class CommandParser
                 case "weatherrain" -> Rain.Trigger();
                 case "weatherthunder" -> Thunder.Trigger();
                 case "weatherclear" -> Clear.Trigger();
+                case "spoonie" -> Cake.Trigger();
             }
         }
     }

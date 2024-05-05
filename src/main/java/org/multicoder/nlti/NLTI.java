@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
 public class NLTI implements ModInitializer
 {
     public static final Logger LOGGER = LoggerFactory.getLogger("nlti");
-    public static final boolean DEBUG = false;
+    public static final boolean DEBUG = true;
     @Override
     public void onInitialize()
     {
