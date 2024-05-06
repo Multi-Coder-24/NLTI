@@ -69,6 +69,13 @@ public class ConfigurationGenerator
         Data.add("Thunder",UtilCooldown);
         Data.add("Rain",UtilCooldown);
         Data.add("Clear",UtilCooldown);
+        Data.add("Axed",UtilCooldown);
+        Data.add("Shoveled",UtilCooldown);
+        Data.add("Pickaxed",UtilCooldown);
+        Data.add("Sworded",UtilCooldown);
+        Data.add("Hoed",UtilCooldown);
+        Data.add("Death",UtilCooldown);
+        Data.add("Cake",UtilCooldown);
         JsonWriter WriterJ = new JsonWriter(new FileWriter(Path));
         Gson Obj = new Gson();
         Obj.toJson(Data,WriterJ);

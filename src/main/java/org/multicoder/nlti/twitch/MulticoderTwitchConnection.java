@@ -44,7 +44,7 @@ public class MulticoderTwitchConnection
                 SERVER = server;
                 JsonReader Reader = new JsonReader(new FileReader(ConfigPath));
                 Config = new NLTIConfig(Reader);
-                CLIENT = TwitchClientBuilder.builder().withFeignLogLevel(Logger.Level.NONE).withEnableHelix(true).withEnableChat(true).withChatAccount(new OAuth2Credential("twitch", Config.Token)).build();
+                CLIENT = TwitchClientBuilder.builder().withFeignLogLevel(Logger.Level.NONE).withEnableHelix(true).withEnableChat(true).withChatAccount(new OAuth2Credential("twitch", Config.getToken(this.getClass()))).build();
                 CHAT = CLIENT.getChat();
                 CHAT.connect();
                 for(String User : Config.Users)

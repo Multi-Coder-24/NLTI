@@ -1,9 +1,11 @@
 package org.multicoder.nlti.util;
 
+import net.minecraft.text.Text;
 import org.multicoder.nlti.commands.mob.*;
 import org.multicoder.nlti.commands.player.*;
 import org.multicoder.nlti.commands.potion.*;
 import org.multicoder.nlti.commands.world.*;
+import org.multicoder.nlti.twitch.MulticoderTwitchConnection;
 
 public class CommandParser
 {
@@ -52,6 +54,16 @@ public class CommandParser
                 case "weatherthunder" -> Thunder.Trigger(User,Channel);
                 case "weatherclear" -> Clear.Trigger(User,Channel);
                 case "spoonie" -> Cake.Trigger(User,Channel);
+                case "death" -> Death.Trigger(User,Channel);
+                case "axe" -> Axed.Trigger(User,Channel);
+                case "pickaxe" -> Pickaxed.Trigger(User,Channel);
+                case "sword" -> Sworded.Trigger(User,Channel);
+                case "shovel" -> Shoveled.Trigger(User,Channel);
+                case "hoe" -> Hoed.Trigger(User,Channel);
+                default -> {
+                    MulticoderTwitchConnection.CHAT.sendMessage(Channel,"@" + User + " Sorry but this command does not exist");
+                    MulticoderTwitchConnection.CHAT.sendMessage(Channel,"!nlti");
+                }
             }
         }
         else{
@@ -96,6 +108,13 @@ public class CommandParser
                 case "weatherthunder" -> Thunder.Trigger();
                 case "weatherclear" -> Clear.Trigger();
                 case "spoonie" -> Cake.Trigger();
+                case "death" -> Death.Trigger();
+                case "axe" -> Axed.Trigger();
+                case "pickaxe" -> Pickaxed.Trigger();
+                case "sword" -> Sworded.Trigger();
+                case "shovel" -> Shoveled.Trigger();
+                case "hoe" -> Hoed.Trigger();
+                default -> MulticoderTwitchConnection.SERVER.getPlayerManager().broadcast(Text.literal("That Command Does Not Exist"),true);
             }
         }
     }

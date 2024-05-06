@@ -12,8 +12,8 @@ import java.util.List;
 
 public class NLTIConfig
 {
-    public String Token;
-    //  Mob Spawn Cooldowns
+    private String Token;
+    //  Mob Commands
     public int[] Creeper;
     public int[] Skeleton;
     public int[] Zombie;
@@ -25,7 +25,7 @@ public class NLTIConfig
     public int[] Pillager;
     public int[] Piglin;
     public int[] Stray;
-    //  Effects Cooldowns
+    //  Potion Commands
     public int[] Poison;
     public int[] Hunger;
     public int[] Weakness;
@@ -37,12 +37,10 @@ public class NLTIConfig
     public int[] Haste;
     public int[] Resistance;
     public int[] NightVision;
-    //  Util Cooldowns
+    //  Player Commands
     public int[] Steal;
     public int[] Snatch;
     public int[] Food;
-    public int[] Night;
-    public int[] Day;
     public int[] HealthD;
     public int[] HealthP;
     public int[] Speed25;
@@ -51,9 +49,19 @@ public class NLTIConfig
     public int[] Speed150;
     public int[] Speed200;
     public int[] Hungry;
+    public int[] Death;
+    public int[] Axed;
+    public int[] Pickaxed;
+    public int[] Sworded;
+    public int[] Shoveled;
+    public int[] Hoed;
+    public int[] Cake;
+    //  World Commands
     public int[] Thunder;
     public int[] Rain;
     public int[] Clear;
+    public int[] Night;
+    public int[] Day;
     //  Properties
     public boolean ChaosMode;
     public String[] Users;
@@ -265,5 +273,51 @@ public class NLTIConfig
         Arr.forEach(e ->{L.add(e.getAsInt());});
         Clear = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
         L.clear();
+
+        Arr = Object.getAsJsonArray("Death");
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Death = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
+
+        Arr = Object.getAsJsonArray("Axed");
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Axed = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
+
+        Arr = Object.getAsJsonArray("Pickaxed");
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Pickaxed = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
+
+        Arr = Object.getAsJsonArray("Shoveled");
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Shoveled = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
+
+        Arr = Object.getAsJsonArray("Sworded");
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Sworded = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
+
+        Arr = Object.getAsJsonArray("Hoed");
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Hoed = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
+
+        Arr = Object.getAsJsonArray("Cake");
+        Arr.forEach(e ->{L.add(e.getAsInt());});
+        Cake = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
+    }
+
+    public String getToken(Class invoker)
+    {
+        if(invoker.getPackageName().startsWith("org.multicoder.nlti"))
+        {
+            return Token;
+        }
+        else{
+            return null;
+        }
     }
 }

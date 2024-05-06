@@ -40,6 +40,13 @@ public class CooldownManager
     public static LocalDateTime SPEED150;
     public static LocalDateTime SPEED200;
     public static LocalDateTime HUNGRY;
+    public static LocalDateTime DEATH;
+    public static LocalDateTime AXED;
+    public static LocalDateTime PICKAXED;
+    public static LocalDateTime SHOVELED;
+    public static LocalDateTime SWORDED;
+    public static LocalDateTime HOED;
+    public static LocalDateTime CAKE;
     //  World Commands
     public static LocalDateTime NIGHT_TIME;
     public static LocalDateTime DAY_TIME;
@@ -89,5 +96,12 @@ public class CooldownManager
         THUNDER = Now;
         RAIN = Now;
         CLEAR = Now;
+        DEATH = Now;
+        AXED = Now;
+        PICKAXED = Now;
+        HOED = Now;
+        SHOVELED = Now;
+        SWORDED = Now;
+        CAKE = Now;
     }
 }

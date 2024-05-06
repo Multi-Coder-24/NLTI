@@ -26,7 +26,7 @@ public class NLTICommands
     }
 
     private static int Test(CommandContext<ServerCommandSource> serverCommandSourceCommandContext) throws CommandSyntaxException {
-        String Command = StringArgumentType.getString(serverCommandSourceCommandContext,"name");
+        String Command = StringArgumentType.getString(serverCommandSourceCommandContext,"name").toLowerCase();
         CommandParser.ParseCommand(Command,"","",true);
         serverCommandSourceCommandContext.getSource().getPlayerOrThrow().sendMessage(Text.literal("Ran Test Of Command: ").append(Command));
         return 0;
