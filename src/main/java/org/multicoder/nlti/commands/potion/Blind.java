@@ -19,7 +19,7 @@ public class Blind
         }
         else
         {
-            int Append = 0;
+            int Append;
             if(MulticoderTwitchConnection.Config.ChaosMode)
             {
                 Append = MulticoderTwitchConnection.Config.Blindness[1];

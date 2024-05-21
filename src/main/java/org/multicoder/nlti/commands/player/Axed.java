@@ -19,7 +19,7 @@ public class Axed
         }
         else
         {
-            int Append = 0;
+            int Append;
             if(MulticoderTwitchConnection.Config.ChaosMode)
             {
                 Append = MulticoderTwitchConnection.Config.Axed[1];

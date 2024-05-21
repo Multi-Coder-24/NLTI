@@ -21,7 +21,7 @@ public class Skeleton
         }
         else
         {
-            int Append = 0;
+            int Append;
             if(MulticoderTwitchConnection.Config.ChaosMode)
             {
                 Append = MulticoderTwitchConnection.Config.Skeleton[1];

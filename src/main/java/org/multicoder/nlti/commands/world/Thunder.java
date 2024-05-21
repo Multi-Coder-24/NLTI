@@ -6,6 +6,7 @@ import org.multicoder.nlti.cooldowns.CooldownManager;
 import org.multicoder.nlti.twitch.MulticoderTwitchConnection;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class Thunder
 {
@@ -17,7 +18,7 @@ public class Thunder
             MulticoderTwitchConnection.CHAT.sendMessage(Channel,"@" + Username + " This command is still on cooldown");
         }
         else {
-            int Append = 0;
+            int Append;
             if (MulticoderTwitchConnection.Config.ChaosMode) {
                 Append = MulticoderTwitchConnection.Config.Thunder[1];
             } else {
@@ -25,13 +26,13 @@ public class Thunder
             }
             Now = Now.plusSeconds(Append);
             CooldownManager.THUNDER = Now;
-            MulticoderTwitchConnection.SERVER.getWorld(World.OVERWORLD).setWeather(0, -1, true, true);
+            Objects.requireNonNull(MulticoderTwitchConnection.SERVER.getWorld(World.OVERWORLD),"Server.getWorld(World.OVERWORLD) returned null").setWeather(0, -1, true, true);
             MulticoderTwitchConnection.SERVER.getPlayerManager().broadcast(Text.of(Username + " Has ran the command: Weather Thunder"),false);
 
         }
     }
     public static void Trigger()
     {
-        MulticoderTwitchConnection.SERVER.getWorld(World.OVERWORLD).setWeather(0,-1,true,true);
+        Objects.requireNonNull(MulticoderTwitchConnection.SERVER.getWorld(World.OVERWORLD),"Server.getWorld(World.OVERWORLD) returned null").setWeather(0,-1,true,true);
     }
 }

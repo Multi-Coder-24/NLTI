@@ -19,7 +19,7 @@ public class Shoveled
         }
         else
         {
-            int Append = 0;
+            int Append;
             if(MulticoderTwitchConnection.Config.ChaosMode)
             {
                 Append = MulticoderTwitchConnection.Config.Shoveled[1];

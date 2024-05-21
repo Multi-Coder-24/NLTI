@@ -19,7 +19,7 @@ public class Pickaxed
         }
         else
         {
-            int Append = 0;
+            int Append;
             if(MulticoderTwitchConnection.Config.ChaosMode)
             {
                 Append = MulticoderTwitchConnection.Config.Pickaxed[1];

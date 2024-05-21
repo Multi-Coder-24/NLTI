@@ -6,6 +6,7 @@ import org.multicoder.nlti.cooldowns.CooldownManager;
 import org.multicoder.nlti.twitch.MulticoderTwitchConnection;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class HealthP
 {
@@ -18,7 +19,7 @@ public class HealthP
         }
         else
         {
-            int Append = 0;
+            int Append;
             if(MulticoderTwitchConnection.Config.ChaosMode)
             {
                 Append = MulticoderTwitchConnection.Config.HealthP[1];
@@ -33,7 +34,7 @@ public class HealthP
                 double MaxHealth = player.getAttributeBaseValue(EntityAttributes.GENERIC_MAX_HEALTH);
                 if(MaxHealth != 30)
                 {
-                    player.getAttributes().getCustomInstance(EntityAttributes.GENERIC_MAX_HEALTH).setBaseValue(MaxHealth + 2);
+                    Objects.requireNonNull(player.getAttributes().getCustomInstance(EntityAttributes.GENERIC_MAX_HEALTH),"player.getAttributes().getCustomInstance(EntityAttributes.GENERIC_MAX_HEALTH) returned null").setBaseValue(MaxHealth + 2);
                 }
             });
             MulticoderTwitchConnection.SERVER.getPlayerManager().broadcast(Text.of(Username + " Has ran the command: Health Plus"),false);
@@ -46,7 +47,7 @@ public class HealthP
             double MaxHealth = player.getAttributeBaseValue(EntityAttributes.GENERIC_MAX_HEALTH);
             if(MaxHealth != 30)
             {
-                player.getAttributes().getCustomInstance(EntityAttributes.GENERIC_MAX_HEALTH).setBaseValue(MaxHealth + 2);
+                Objects.requireNonNull(player.getAttributes().getCustomInstance(EntityAttributes.GENERIC_MAX_HEALTH),"player.getAttributes().getCustomInstance(EntityAttributes.GENERIC_MAX_HEALTH) returned null").setBaseValue(MaxHealth + 2);
             }
         });
     }

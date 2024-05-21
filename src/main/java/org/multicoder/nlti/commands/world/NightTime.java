@@ -6,6 +6,7 @@ import org.multicoder.nlti.cooldowns.CooldownManager;
 import org.multicoder.nlti.twitch.MulticoderTwitchConnection;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class NightTime
 {
@@ -18,7 +19,7 @@ public class NightTime
         }
         else
         {
-            int Append = 0;
+            int Append;
             if(MulticoderTwitchConnection.Config.ChaosMode)
             {
                 Append = MulticoderTwitchConnection.Config.Night[1];
@@ -28,12 +29,12 @@ public class NightTime
             }
             Now = Now.plusSeconds(Append);
             CooldownManager.NIGHT_TIME = Now;
-            MulticoderTwitchConnection.SERVER.getWorld(World.OVERWORLD).setTimeOfDay(13000L);
+            Objects.requireNonNull(MulticoderTwitchConnection.SERVER.getWorld(World.OVERWORLD),"Server.getWorld(World.OVERWORLD) returned null").setTimeOfDay(13000L);
             MulticoderTwitchConnection.SERVER.getPlayerManager().broadcast(Text.of(Username + " Has ran the command: Night"),false);
         }
     }
     public static void Trigger()
     {
-        MulticoderTwitchConnection.SERVER.getWorld(World.OVERWORLD).setTimeOfDay(13000L);
+        Objects.requireNonNull(MulticoderTwitchConnection.SERVER.getWorld(World.OVERWORLD),"Server.getWorld(World.OVERWORLD) returned null").setTimeOfDay(13000L);
     }
 }

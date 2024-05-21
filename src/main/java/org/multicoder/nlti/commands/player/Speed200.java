@@ -6,6 +6,7 @@ import org.multicoder.nlti.cooldowns.CooldownManager;
 import org.multicoder.nlti.twitch.MulticoderTwitchConnection;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class Speed200
 {
@@ -17,7 +18,7 @@ public class Speed200
             MulticoderTwitchConnection.CHAT.sendMessage(Channel,"@" + Username + " This command is still on cooldown");
         }
         else {
-            int Append = 0;
+            int Append;
             if (MulticoderTwitchConnection.Config.ChaosMode) {
                 Append = MulticoderTwitchConnection.Config.Speed200[1];
             } else {
@@ -25,16 +26,12 @@ public class Speed200
             }
             Now = Now.plusSeconds(Append);
             CooldownManager.SPEED200 = Now;
-            MulticoderTwitchConnection.SERVER.getPlayerManager().getPlayerList().forEach(player -> {
-                player.getAttributes().getCustomInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).setBaseValue(0.2f);
-            });
+            MulticoderTwitchConnection.SERVER.getPlayerManager().getPlayerList().forEach(player -> Objects.requireNonNull(player.getAttributes().getCustomInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED),"player.getAttributes().getCustomInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED) returned null").setBaseValue(0.2f));
             MulticoderTwitchConnection.SERVER.getPlayerManager().broadcast(Text.of(Username + " Has ran the command: Speed 200"),false);
         }
     }
     public static void Trigger()
     {
-        MulticoderTwitchConnection.SERVER.getPlayerManager().getPlayerList().forEach(player ->{
-            player.getAttributes().getCustomInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).setBaseValue(0.2f);
-        });
+        MulticoderTwitchConnection.SERVER.getPlayerManager().getPlayerList().forEach(player -> Objects.requireNonNull(player.getAttributes().getCustomInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED),"player.getAttributes().getCustomInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED) returned null").setBaseValue(0.2f));
     }
 }

@@ -15,7 +15,7 @@ public class Hungry
             MulticoderTwitchConnection.CHAT.sendMessage(Channel,"@" + Username + " This command is still on cooldown");
         }
         else {
-            int Append = 0;
+            int Append;
             if (MulticoderTwitchConnection.Config.ChaosMode) {
                 Append = MulticoderTwitchConnection.Config.Hungry[1];
             } else {

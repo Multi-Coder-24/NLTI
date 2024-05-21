@@ -21,7 +21,7 @@ public class Cake
             MulticoderTwitchConnection.CHAT.sendMessage(Channel,"@" + User + " This command is still on cooldown");
         }
         else {
-            int Append = 0;
+            int Append;
             if (MulticoderTwitchConnection.Config.ChaosMode) {
                 Append = MulticoderTwitchConnection.Config.Cake[1];
             } else {
@@ -32,14 +32,13 @@ public class Cake
             MulticoderTwitchConnection.SERVER.getPlayerManager().getPlayerList().forEach(player ->
             {
                 BlockPos AboveHead = player.getBlockPos().up(3);
-                ItemStack Cake = new ItemStack(Items.CAKE,1);
-                Cake.setCustomName(Text.literal("Gift From Spoonie").formatted(Formatting.BOLD));
+                ItemStack Cake = new ItemStack(Items.CAKE,1).setCustomName(Text.literal("Gift From Spoonie").formatted(Formatting.BOLD));
                 ItemEntity StackE1 = new ItemEntity(player.getWorld(),AboveHead.getX(),AboveHead.getY(),AboveHead.getZ(),Cake);
-                ItemEntity StackE2 = new ItemEntity(player.getWorld(),AboveHead.getX() + 0.5f,AboveHead.getY(),AboveHead.getZ() - 0.5f,Cake);
-                ItemEntity StackE3 = new ItemEntity(player.getWorld(),AboveHead.getX() - 0.5f,AboveHead.getY(),AboveHead.getZ() + 0.5f,Cake);
                 player.getWorld().spawnEntity(StackE1);
-                player.getWorld().spawnEntity(StackE2);
-                player.getWorld().spawnEntity(StackE3);
+                StackE1.setPos(AboveHead.getX() + 0.5,AboveHead.getY(), AboveHead.getZ() - 0.5);
+                player.getWorld().spawnEntity(StackE1.copy());
+                StackE1.setPos(AboveHead.getX() - 0.5,AboveHead.getY(), AboveHead.getZ() + 0.5);
+                player.getWorld().spawnEntity(StackE1.copy());
             });
             MulticoderTwitchConnection.SERVER.getPlayerManager().broadcast(Text.of(User + " Has ran the command: Spoonie"),false);
         }
