@@ -12,6 +12,6 @@ public class PlayerJoinedEvent implements ServerPlayConnectionEvents.Join
     @Override
     public void onPlayReady(ServerPlayNetworkHandler handler, PacketSender sender, MinecraftServer server)
     {
-        handler.getPlayer().sendMessage(Text.literal("Welcome To NLTI by Multicoder, We are running at version 2.5.0").formatted(Formatting.DARK_BLUE));
+        handler.getPlayer().sendMessage(Text.literal("Welcome To NLTI by Multicoder, We are running at version 2.6.0").formatted(Formatting.DARK_BLUE));
     }
 }

@@ -2,14 +2,10 @@ package org.multicoder.nlti.twitch;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonWriter;
 
-import java.io.FileOutputStream;
 import java.io.FileWriter;
-import java.io.OutputStream;
-import java.util.Properties;
 
 public class ConfigurationGenerator
 {
@@ -29,6 +25,8 @@ public class ConfigurationGenerator
         Usernames.add("examplename");
         Usernames.add("collaborator");
         Data.addProperty("Token","**");
+        Data.addProperty("clientID","**");
+        Data.addProperty("redirectURL","**");
         Data.add("Usernames",Usernames);
         Data.addProperty("ChaosMode",false);
         Data.add("CreeperCooldown",SpawnCooldown);
