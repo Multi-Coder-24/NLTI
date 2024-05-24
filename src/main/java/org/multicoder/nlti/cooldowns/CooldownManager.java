@@ -47,6 +47,8 @@ public class CooldownManager
     public static LocalDateTime SWORDED;
     public static LocalDateTime HOED;
     public static LocalDateTime CAKE;
+    public static LocalDateTime SLEEPFUL;
+    public static LocalDateTime SLEEPLESS;
     //  World Commands
     public static LocalDateTime NIGHT_TIME;
     public static LocalDateTime DAY_TIME;
@@ -103,5 +105,7 @@ public class CooldownManager
         SHOVELED = Now;
         SWORDED = Now;
         CAKE = Now;
+        SLEEPFUL = Now;
+        SLEEPLESS = Now;
     }
 }

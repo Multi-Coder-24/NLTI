@@ -30,9 +30,6 @@ public class BedBound
                 cir.setReturnValue(ActionResult.CONSUME);
                 cir.cancel();
             }
-            else{
-                player.sendMessage(Text.literal("Can Sleep"));
-            }
         }
     }
 }
