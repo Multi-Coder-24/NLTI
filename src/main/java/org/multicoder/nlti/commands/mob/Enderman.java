@@ -1,6 +1,7 @@
 package org.multicoder.nlti.commands.mob;
 
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.mob.EndermanEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
@@ -35,6 +36,7 @@ public class Enderman
                 BlockPos Position = player.getBlockPos();
                 Position.add(2,2,2);
                 EndermanEntity C = new EndermanEntity(EntityType.ENDERMAN,player.getServerWorld());
+                C.initialize(player.getServerWorld(),player.getServerWorld().getLocalDifficulty(Position), SpawnReason.COMMAND,null,null);
                 C.setCustomName(Text.literal(Username).formatted(Formatting.BOLD));
                 C.setPosition(Position.toCenterPos());
                 player.getServerWorld().spawnEntity(C);
@@ -48,6 +50,7 @@ public class Enderman
             BlockPos Position = player.getBlockPos();
             Position.add(2,2,2);
             EndermanEntity C = new EndermanEntity(EntityType.ENDERMAN,player.getServerWorld());
+            C.initialize(player.getServerWorld(),player.getServerWorld().getLocalDifficulty(Position), SpawnReason.COMMAND,null,null);
             C.setPosition(Position.toCenterPos());
             player.getServerWorld().spawnEntity(C);
         });
