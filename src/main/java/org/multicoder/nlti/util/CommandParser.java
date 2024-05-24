@@ -60,6 +60,8 @@ public class CommandParser
                 case "sword" -> Sworded.Trigger(User,Channel);
                 case "shovel" -> Shoveled.Trigger(User,Channel);
                 case "hoe" -> Hoed.Trigger(User,Channel);
+                case "sleepless" -> Sleepless.Trigger(User,Channel);
+                case "sleepful" -> Sleepful.Trigger(User,Channel);
                 default -> {
                     MulticoderTwitchConnection.CHAT.sendMessage(Channel,"@" + User + " Sorry but this command does not exist");
                     MulticoderTwitchConnection.CHAT.sendMessage(Channel,"!nlti");
@@ -114,6 +116,8 @@ public class CommandParser
                 case "sword" -> Sworded.Trigger();
                 case "shovel" -> Shoveled.Trigger();
                 case "hoe" -> Hoed.Trigger();
+                case "sleepless" -> Sleepless.Trigger();
+                case "sleepful" -> Sleepful.Trigger();
                 default -> MulticoderTwitchConnection.SERVER.getPlayerManager().broadcast(Text.literal("That Command Does Not Exist"),true);
             }
         }

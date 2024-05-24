@@ -4,13 +4,16 @@ import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.minecraft.server.MinecraftServer;
 import org.multicoder.nlti.NLTI;
 import org.multicoder.nlti.cooldowns.CooldownManager;
+import org.multicoder.nlti.data.GlobalVars;
 import org.multicoder.nlti.twitch.MulticoderTwitchConnection;
 
+@SuppressWarnings("all")
 public class ServerStartedEvent implements ServerLifecycleEvents.ServerStarted
 {
     @Override
     public void onServerStarted(MinecraftServer server)
     {
+        NLTI.Vars = GlobalVars.getInstance(server);
         NLTI.LOGGER.info("Server Started");
         NLTI.LOGGER.info("Creating Cooldown Managers");
         CooldownManager.Init();
