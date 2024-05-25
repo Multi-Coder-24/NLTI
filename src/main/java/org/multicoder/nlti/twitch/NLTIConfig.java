@@ -60,6 +60,8 @@ public class NLTIConfig
     public int[] Cake;
     public int[] Sleepful;
     public int[] Sleepless;
+    public int[] NoChests;
+    public int[] Chests;
     //  World Commands
     public int[] Thunder;
     public int[] Rain;
@@ -323,6 +325,16 @@ public class NLTIConfig
         Arr = Object.getAsJsonArray("Sleepless");
         Arr.forEach(e ->L.add(e.getAsInt()));
         Sleepless = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
+
+        Arr = Object.getAsJsonArray("NoChests");
+        Arr.forEach(e ->L.add(e.getAsInt()));
+        NoChests = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
+        L.clear();
+
+        Arr = Object.getAsJsonArray("Chests");
+        Arr.forEach(e ->L.add(e.getAsInt()));
+        Chests = ArrayUtils.toPrimitive(L.toArray(new Integer[0]));
         L.clear();
     }
 

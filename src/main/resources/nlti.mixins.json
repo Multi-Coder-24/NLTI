@@ -3,7 +3,8 @@
   "package": "org.multicoder.nlti.mixins",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "BedBound"
+    "BedBound",
+    "NoChests"
   ],
   "injectors": {
     "defaultRequire": 1

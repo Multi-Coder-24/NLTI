@@ -49,6 +49,8 @@ public class CooldownManager
     public static LocalDateTime CAKE;
     public static LocalDateTime SLEEPFUL;
     public static LocalDateTime SLEEPLESS;
+    public static LocalDateTime NOCHESTS;
+    public static LocalDateTime CHESTS;
     //  World Commands
     public static LocalDateTime NIGHT_TIME;
     public static LocalDateTime DAY_TIME;
@@ -107,5 +109,7 @@ public class CooldownManager
         CAKE = Now;
         SLEEPFUL = Now;
         SLEEPLESS = Now;
+        NOCHESTS = Now;
+        CHESTS = Now;
     }
 }

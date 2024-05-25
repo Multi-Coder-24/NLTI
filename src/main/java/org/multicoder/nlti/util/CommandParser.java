@@ -42,17 +42,17 @@ public class CommandParser
                 case "food" -> Food.Trigger(User,Channel);
                 case "night" -> NightTime.Trigger(User,Channel);
                 case "day" -> DayTime.Trigger(User,Channel);
-                case "healthminus" -> HealthD.Trigger(User,Channel);
-                case "healthplus" -> HealthP.Trigger(User,Channel);
-                case "speed50" -> Speed50.Trigger(User,Channel);
-                case "speed25" -> Speed25.Trigger(User,Channel);
-                case "speed100" -> Speed100.Trigger(User,Channel);
-                case "speed150" -> Speed150.Trigger(User,Channel);
-                case "speed200" -> Speed200.Trigger(User,Channel);
+                case "health-minus" -> HealthD.Trigger(User,Channel);
+                case "health-plus" -> HealthP.Trigger(User,Channel);
+                case "speed-50" -> Speed50.Trigger(User,Channel);
+                case "speed-25" -> Speed25.Trigger(User,Channel);
+                case "speed-100" -> Speed100.Trigger(User,Channel);
+                case "speed-150" -> Speed150.Trigger(User,Channel);
+                case "speed-200" -> Speed200.Trigger(User,Channel);
                 case "hungry" -> Hungry.Trigger(User,Channel);
-                case "weatherrain" -> Rain.Trigger(User,Channel);
-                case "weatherthunder" -> Thunder.Trigger(User,Channel);
-                case "weatherclear" -> Clear.Trigger(User,Channel);
+                case "weather-rain" -> Rain.Trigger(User,Channel);
+                case "weather-thunder" -> Thunder.Trigger(User,Channel);
+                case "weather-clear" -> Clear.Trigger(User,Channel);
                 case "spoonie" -> Cake.Trigger(User,Channel);
                 case "death" -> Death.Trigger(User,Channel);
                 case "axe" -> Axed.Trigger(User,Channel);
@@ -62,6 +62,8 @@ public class CommandParser
                 case "hoe" -> Hoed.Trigger(User,Channel);
                 case "sleepless" -> Sleepless.Trigger(User,Channel);
                 case "sleepful" -> Sleepful.Trigger(User,Channel);
+                case "no-chests" -> NoChests.Trigger(User,Channel);
+                case "chests" -> Chests.Trigger(User,Channel);
                 default -> {
                     MulticoderTwitchConnection.CHAT.sendMessage(Channel,"@" + User + " Sorry but this command does not exist");
                     MulticoderTwitchConnection.CHAT.sendMessage(Channel,"!nlti");
@@ -98,17 +100,17 @@ public class CommandParser
                 case "food" ->Food.Trigger();
                 case "night" ->NightTime.Trigger();
                 case "day" ->DayTime.Trigger();
-                case "healthminus" -> HealthD.Trigger();
-                case "healthplus" -> HealthP.Trigger();
-                case "speed50" -> Speed50.Trigger();
-                case "speed25" -> Speed25.Trigger();
-                case "speed100" -> Speed100.Trigger();
-                case "speed150" -> Speed150.Trigger();
-                case "speed200" -> Speed200.Trigger();
+                case "health-minus" -> HealthD.Trigger();
+                case "health-plus" -> HealthP.Trigger();
+                case "speed-50" -> Speed50.Trigger();
+                case "speed-25" -> Speed25.Trigger();
+                case "speed-100" -> Speed100.Trigger();
+                case "speed-150" -> Speed150.Trigger();
+                case "speed-200" -> Speed200.Trigger();
                 case "hungry" -> Hungry.Trigger();
-                case "weatherrain" -> Rain.Trigger();
-                case "weatherthunder" -> Thunder.Trigger();
-                case "weatherclear" -> Clear.Trigger();
+                case "weather-rain" -> Rain.Trigger();
+                case "weather-thunder" -> Thunder.Trigger();
+                case "weather-clear" -> Clear.Trigger();
                 case "spoonie" -> Cake.Trigger();
                 case "death" -> Death.Trigger();
                 case "axe" -> Axed.Trigger();
@@ -118,6 +120,8 @@ public class CommandParser
                 case "hoe" -> Hoed.Trigger();
                 case "sleepless" -> Sleepless.Trigger();
                 case "sleepful" -> Sleepful.Trigger();
+                case "no-chests" -> NoChests.Trigger();
+                case "chests" -> Chests.Trigger();
                 default -> MulticoderTwitchConnection.SERVER.getPlayerManager().broadcast(Text.literal("That Command Does Not Exist"),true);
             }
         }
