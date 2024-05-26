@@ -3,9 +3,6 @@ package org.multicoder.nlti.twitch;
 import com.github.twitch4j.chat.events.channel.ChannelMessageEvent;
 import org.multicoder.nlti.util.CommandParser;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class MessageListener
 {
     public static void Handle(ChannelMessageEvent event)

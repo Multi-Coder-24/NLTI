@@ -7,8 +7,13 @@
 	"authors": [
 		"Multicoder"
 	],
-	"license": "LGPLv3",
+	"contact": {
+		"homepage": "https://modrinth.com/project/next-level-twitch-integration/",
+		"sources": "https://github.com/DDX5/NLTI/tree/Mod"
+	},
+	"license": "GPLv3",
 	"environment": "*",
+	"icon": "assets/nlti/logo.png",
 	"entrypoints": {
 		"main": [
 			"org.multicoder.nlti.NLTI"
