@@ -17,10 +17,7 @@ public class MessageListener
             String User = event.getUser().getName();
             if(Command.startsWith("!mc-"))
             {
-                List<String> TH = new java.util.ArrayList<>(List.of(Command.split("-")));
-                TH.remove(0);
-                Command = Arrays.deepToString(TH.toArray());
-                Command = Command.substring(1,Command.length() - 1);
+                Command = Command.split("-")[1];
                 CommandParser.ParseCommand(Command,User,Channel,false);
             }
         }
