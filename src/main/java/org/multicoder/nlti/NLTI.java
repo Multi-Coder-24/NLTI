@@ -16,8 +16,10 @@ import org.slf4j.LoggerFactory;
 
 public class NLTI implements ModInitializer
 {
+    public static final String Version = "3.0.0";
     public static final Logger LOGGER = LoggerFactory.getLogger(NLTI.class);
     public static final boolean DEBUG = false;
+    public static boolean FIRSTRUN = false;
     public static GlobalVars Vars;
     @Override
     public void onInitialize()

@@ -9,15 +9,11 @@ import com.github.twitch4j.auth.TwitchAuth;
 import com.github.twitch4j.chat.TwitchChat;
 import com.github.twitch4j.chat.events.channel.ChannelMessageEvent;
 import com.github.twitch4j.helix.TwitchHelix;
-import com.github.twitch4j.helix.domain.OutboundFollow;
-import com.google.gson.stream.JsonReader;
 import feign.Logger;
 import net.minecraft.server.MinecraftServer;
 import org.multicoder.nlti.NLTI;
-
-import java.io.File;
-import java.io.FileReader;
-import java.util.List;
+import org.multicoder.nlti.config.ConfigurationManager;
+import org.multicoder.nlti.config.NLTIConfig;
 
 public class MulticoderTwitchConnection
 {
@@ -29,23 +25,19 @@ public class MulticoderTwitchConnection
     public static NLTIConfig Config;
     public MulticoderTwitchConnection(MinecraftServer server) throws Exception
     {
+        String CommandConfig = server.getRunDirectory().getAbsolutePath() + "/nlti-commands.json";
+        String MainConfig = server.getRunDirectory().getAbsolutePath() + "/nlti-config.json";
+        ConfigurationManager.LoadOrCreateConfig(MainConfig,CommandConfig);
         if(NLTI.DEBUG)
         {
             SERVER = server;
         }
-        else{
+        else
+        {
             Enabled = false;
-            String ConfigPath = server.getRunDirectory().getAbsolutePath() + "/nlti-config.json";
-            File JF = new File(ConfigPath);
-            if(!JF.exists())
+            SERVER = server;
+            if(!NLTI.FIRSTRUN)
             {
-                ConfigurationGenerator.CreateJSONConfig(ConfigPath);
-            }
-            else
-            {
-                SERVER = server;
-                JsonReader Reader = new JsonReader(new FileReader(ConfigPath));
-                Config = new NLTIConfig(Reader);
                 CredentialManager Manager = CredentialManagerBuilder.builder().build();
                 TwitchAuth.registerIdentityProvider(Manager,Config.getClientID(this.getClass()),Config.getToken(this.getClass()),Config.getRedirect(this.getClass()));
                 CLIENT = TwitchClientBuilder.builder().withFeignLogLevel(Logger.Level.NONE).withCredentialManager(Manager).withEnableHelix(true).withEnableChat(true).withChatAccount(new OAuth2Credential("twitch", Config.getToken(this.getClass()))).build();
@@ -60,9 +52,5 @@ public class MulticoderTwitchConnection
                 }
             }
         }
-    }
-    public static List<OutboundFollow> FetchFollow(String UserID, String ChannelID)
-    {
-        return HELIX.getFollowedChannels(Config.getToken(MulticoderTwitchConnection.class),UserID,ChannelID,null,null).execute().getFollows();
     }
 }

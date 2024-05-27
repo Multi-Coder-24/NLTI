@@ -11,7 +11,7 @@ public class ServerStoppedEvent implements ServerLifecycleEvents.ServerStopped
     @Override
     public void onServerStopped(MinecraftServer server)
     {
-        if(!NLTI.DEBUG)
+        if(!NLTI.DEBUG && !NLTI.FIRSTRUN)
         {
             for(String U : MulticoderTwitchConnection.Config.Users)
             {

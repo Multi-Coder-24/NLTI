@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"id": "nlti",
-	"version": "2.8.0",
+	"version": "3.0.0",
 	"name": "Next Level Twitch Integration",
 	"description": "Bridges Minecraft and Twitch in a fun unique way",
 	"authors": [

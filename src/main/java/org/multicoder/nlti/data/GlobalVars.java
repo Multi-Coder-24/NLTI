@@ -5,6 +5,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.PersistentState;
 import net.minecraft.world.PersistentStateManager;
 import net.minecraft.world.World;
+import org.multicoder.nlti.NLTI;
 
 import java.util.Objects;
 
@@ -17,6 +18,7 @@ public class GlobalVars extends PersistentState
     {
         nbt.putBoolean("CanSleep",CanSleep);
         nbt.putBoolean("Chests",Chests);
+        nbt.putString("version", NLTI.Version);
         return nbt;
     }
     public void UpdateSleepVar(boolean cansleep)
@@ -32,8 +34,22 @@ public class GlobalVars extends PersistentState
     public static GlobalVars createFromNBT(NbtCompound tag)
     {
         GlobalVars GV = new GlobalVars();
-        GV.CanSleep = tag.getBoolean("CanSleep");
-        GV.Chests = tag.getBoolean("Chests");
+        if(tag.contains("version"))
+        {
+            //  Current Update 3.0+
+            if(!tag.getString("version").equals(NLTI.Version))
+            {
+                //  Older Version
+                GV.CanSleep = tag.getBoolean("CanSleep");
+                GV.Chests = tag.getBoolean("Chests");
+            }
+            else
+            {
+                //  Current Version
+                GV.CanSleep = tag.getBoolean("CanSleep");
+                GV.Chests = tag.getBoolean("Chests");
+            }
+        }
         return GV;
     }
 
@@ -42,7 +58,8 @@ public class GlobalVars extends PersistentState
             GlobalVars::createFromNBT,
             null
     );
-    public static GlobalVars getInstance(MinecraftServer server){
+    public static GlobalVars getInstance(MinecraftServer server)
+    {
         PersistentStateManager manager = Objects.requireNonNull(server.getWorld(World.OVERWORLD)).getPersistentStateManager();
         GlobalVars GV = manager.getOrCreate(type,"nlti");
         GV.markDirty();

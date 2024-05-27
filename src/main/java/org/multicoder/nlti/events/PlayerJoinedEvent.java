@@ -6,12 +6,17 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayNetworkHandler;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+import org.multicoder.nlti.NLTI;
 
 public class PlayerJoinedEvent implements ServerPlayConnectionEvents.Join
 {
     @Override
     public void onPlayReady(ServerPlayNetworkHandler handler, PacketSender sender, MinecraftServer server)
     {
-        handler.getPlayer().sendMessage(Text.literal("Welcome To NLTI by Multicoder, We are running at version 2.8.0").formatted(Formatting.DARK_BLUE));
+        if(NLTI.FIRSTRUN)
+        {
+            handler.getPlayer().sendMessage(Text.literal("NLTI Has detected this as your first run. Please exit, shutdown the server and edit both config files."));
+        }
+        handler.getPlayer().sendMessage(Text.literal("Welcome To NLTI by Multicoder, We are running at version 3.0.0").formatted(Formatting.DARK_BLUE));
     }
 }
