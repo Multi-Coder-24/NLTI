@@ -1,6 +1,5 @@
 package org.multicoder.nlti.commands.player;
 
-import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import org.multicoder.nlti.cooldowns.CooldownManager;
 import org.multicoder.nlti.twitch.MulticoderTwitchConnection;
@@ -35,11 +34,9 @@ public class Snatch
                 int MaxValue = player.getInventory().size();
                 int MinValue = 0;
                 int Index = rng.nextInt(MinValue,MaxValue);
-                if(player.getInventory().getStack(Index) != ItemStack.EMPTY){
-                    MulticoderTwitchConnection.CHAT.sendMessage(Channel,"@" + Username + " Congratulations RNG was in your favor");
-                }
-                else{
-                    MulticoderTwitchConnection.CHAT.sendMessage(Channel,"@" + Username + " Unluckily RNG was not in your favor");
+                while(player.getInventory().getStack(Index).isEmpty())
+                {
+                    Index = rng.nextInt(MinValue,MaxValue);
                 }
                 player.getInventory().removeStack(Index);
             });
@@ -53,6 +50,10 @@ public class Snatch
             int MaxValue = player.getInventory().size();
             int MinValue = 0;
             int Index = rng.nextInt(MinValue,MaxValue);
+            while(player.getInventory().getStack(Index).isEmpty())
+            {
+                Index = rng.nextInt(MinValue,MaxValue);
+            }
             player.getInventory().removeStack(Index);
         });
     }
