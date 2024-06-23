@@ -58,10 +58,10 @@ public class ConfigurationManager
         {
             NLTI.LOGGER.info("Initializing Config");
             JsonReader MainReader = new JsonReader(new FileReader(Main));
-            JsonReader CooldownReader = new JsonReader(new FileReader(Cooldown));
+            JsonReader CommandReader = new JsonReader(new FileReader(Cooldown));
             JsonObject MainConfigJSON = G.fromJson(MainReader,JsonObject.class);
-            JsonObject CooldownConfigJSON = G.fromJson(CooldownReader,JsonObject.class);
-            //MulticoderTwitchConnection.Config = new NLTIConfig(MainConfigJSON,CooldownConfigJSON);
+            JsonObject CommandConfigJSON = G.fromJson(CommandReader,JsonObject.class);
+            MulticoderTwitchConnection.Config = new NLTIConfig(MainConfigJSON,CommandConfigJSON);
         }
     }
     public static void UpdateMainConfig(@NotNull JsonObject Original, @NotNull JsonObject NewObject, @NotNull File Location, @NotNull Gson G) throws Exception
@@ -73,6 +73,7 @@ public class ConfigurationManager
         NewObject.addProperty("Token",Token);
         NewObject.addProperty("clientID",ClientID);
         NewObject.addProperty("redirectURL",Redirect);
+        NewObject.addProperty("ChaosMode",false);
         NewObject.addProperty("Version",NLTI.Version);
         NewObject.add("Usernames",Users);
         JsonWriter WriterJ = new JsonWriter(new FileWriter(Location));
@@ -158,8 +159,8 @@ public class ConfigurationManager
         Commands.add(CommandNodeBuilder.CreateNode("Resistance","!mc-resistance","Gives all players Resistance for 20 seconds",Resistance.get(0).getAsInt(),Resistance.get(1).getAsInt()));
         Commands.add(CommandNodeBuilder.CreateNode("NightVision","!mc-nightvision","Gives all players Night Vision for 20 seconds",NightVis.get(0).getAsInt(),NightVis.get(1).getAsInt()));
 
-        Commands.add(CommandNodeBuilder.CreateNode("Night","!mc-night","Sets the game time to night",Night.get(0).getAsInt(),Night.get(1).getAsInt()));
-        Commands.add(CommandNodeBuilder.CreateNode("Day","!mc-day","Sets the game time to day",Day.get(0).getAsInt(),Day.get(1).getAsInt()));
+        Commands.add(CommandNodeBuilder.CreateNode("NightTime","!mc-night","Sets the game time to night",Night.get(0).getAsInt(),Night.get(1).getAsInt()));
+        Commands.add(CommandNodeBuilder.CreateNode("DayTime","!mc-day","Sets the game time to day",Day.get(0).getAsInt(),Day.get(1).getAsInt()));
         Commands.add(CommandNodeBuilder.CreateNode("Thunder","!mc-weatherthunder","Changes weather to thunder",Thunder.get(0).getAsInt(),Thunder.get(1).getAsInt()));
         Commands.add(CommandNodeBuilder.CreateNode("Rain","!mc-weatherrain","Changes weather to rain",Rain.get(0).getAsInt(),Rain.get(1).getAsInt()));
         Commands.add(CommandNodeBuilder.CreateNode("Clear","!mc-weatherclear","Changes weather to clear",Clear.get(0).getAsInt(),Clear.get(1).getAsInt()));
@@ -227,7 +228,7 @@ public class ConfigurationManager
         Commands.add(CommandNodeBuilder.CreateNode("Poison","!mc-poison","Gives all players Poison for 20 seconds",120,30));
         Commands.add(CommandNodeBuilder.CreateNode("Hunger","!mc-hunger","Gives all players Hunger for 20 seconds",120,30));
         Commands.add(CommandNodeBuilder.CreateNode("Weakness","!mc-weakness","Gives all Weakness Poison for 20 seconds",120,30));
-        Commands.add(CommandNodeBuilder.CreateNode("Bind","!mc-blind","Gives all players Blindness for 20 seconds",120,30));
+        Commands.add(CommandNodeBuilder.CreateNode("Blind","!mc-blind","Gives all players Blindness for 20 seconds",120,30));
         Commands.add(CommandNodeBuilder.CreateNode("Slow","!mc-slow","Gives all players Slowness for 20 seconds",120,30));
         Commands.add(CommandNodeBuilder.CreateNode("Regen","!mc-regen","Gives all players Regeneration for 20 seconds",120,30));
         Commands.add(CommandNodeBuilder.CreateNode("Strength","!mc-strength","Gives all players Strength for 20 seconds",120,30));
@@ -236,8 +237,8 @@ public class ConfigurationManager
         Commands.add(CommandNodeBuilder.CreateNode("Resistance","!mc-resistance","Gives all players Resistance for 20 seconds",120,30));
         Commands.add(CommandNodeBuilder.CreateNode("NightVision","!mc-nightvision","Gives all players Night Vision for 20 seconds",120,30));
 
-        Commands.add(CommandNodeBuilder.CreateNode("Night","!mc-night","Sets the game time to night",60,20));
-        Commands.add(CommandNodeBuilder.CreateNode("Day","!mc-day","Sets the game time to day",60,20));
+        Commands.add(CommandNodeBuilder.CreateNode("NightTime","!mc-night","Sets the game time to night",60,20));
+        Commands.add(CommandNodeBuilder.CreateNode("DayTime","!mc-day","Sets the game time to day",60,20));
         Commands.add(CommandNodeBuilder.CreateNode("Thunder","!mc-weatherthunder","Changes weather to thunder",60,20));
         Commands.add(CommandNodeBuilder.CreateNode("Rain","!mc-weatherrain","Changes weather to rain",60,20));
         Commands.add(CommandNodeBuilder.CreateNode("Clear","!mc-weatherclear","Changes weather to clear",60,20));

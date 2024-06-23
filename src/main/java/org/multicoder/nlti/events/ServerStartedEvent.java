@@ -3,7 +3,6 @@ package org.multicoder.nlti.events;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.minecraft.server.MinecraftServer;
 import org.multicoder.nlti.NLTI;
-import org.multicoder.nlti.cooldowns.CooldownManager;
 import org.multicoder.nlti.data.GlobalVars;
 import org.multicoder.nlti.twitch.MulticoderTwitchConnection;
 
@@ -15,8 +14,6 @@ public class ServerStartedEvent implements ServerLifecycleEvents.ServerStarted
     {
         NLTI.Vars = GlobalVars.getInstance(server);
         NLTI.LOGGER.info("Server Started");
-        NLTI.LOGGER.info("Creating Cooldown Managers");
-        CooldownManager.Init();
         NLTI.LOGGER.info("Creating Twitch Bot Thread");
         Thread T = new Thread(() ->{
             try{

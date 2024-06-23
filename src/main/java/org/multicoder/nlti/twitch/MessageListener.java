@@ -1,7 +1,10 @@
 package org.multicoder.nlti.twitch;
 
 import com.github.twitch4j.chat.events.channel.ChannelMessageEvent;
-import org.multicoder.nlti.util.CommandParser;
+import org.multicoder.nlti.NLTI;
+import org.multicoder.nlti.util.CommandNodeBuilder;
+
+import java.time.LocalDateTime;
 
 public class MessageListener
 {
@@ -9,13 +12,37 @@ public class MessageListener
     {
         if(MulticoderTwitchConnection.Enabled)
         {
-            String Channel = event.getChannel().getName();
             String Command = event.getMessage().toLowerCase();
             String User = event.getUser().getName();
-            if(Command.startsWith("!mc-"))
+            if(MulticoderTwitchConnection.Config.Commands_Dict.containsKey(Command))
             {
-                Command = Command.split("-")[1];
-                CommandParser.ParseCommand(Command,User,Channel,false);
+                //  User Ran Command
+                CommandNodeBuilder.CommandNode Node = MulticoderTwitchConnection.Config.Commands_Dict.get(Command);
+                if(Node.Cooldown.isBefore(LocalDateTime.now()))
+                {
+                    //  Cooldown Valid
+                    if(MulticoderTwitchConnection.Config.ChaosMode)
+                    {
+                        Node.Cooldown = Node.Cooldown.plusSeconds(Node.Chaos);
+                    }
+                    else
+                    {
+                        Node.Cooldown = Node.Cooldown.plusSeconds(Node.Normal);
+                    }
+                    try
+                    {
+                        Node.Invoker.invoke(null,User);
+                    }
+                    catch (Exception ex)
+                    {
+                        NLTI.LOGGER.error("Failed To Run: {}",Command);
+                        NLTI.LOGGER.error("Caused By: ", ex);
+                    }
+                }
+                else
+                {
+                    event.reply(MulticoderTwitchConnection.CHAT,"This Command is currently on cooldown");
+                }
             }
         }
     }

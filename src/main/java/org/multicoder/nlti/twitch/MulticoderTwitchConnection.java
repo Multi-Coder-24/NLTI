@@ -14,6 +14,9 @@ import net.minecraft.server.MinecraftServer;
 import org.multicoder.nlti.NLTI;
 import org.multicoder.nlti.config.ConfigurationManager;
 import org.multicoder.nlti.config.NLTIConfig;
+import org.multicoder.nlti.mcsi.ScriptReader;
+
+import java.time.LocalDateTime;
 
 public class MulticoderTwitchConnection
 {
@@ -25,9 +28,12 @@ public class MulticoderTwitchConnection
     public static NLTIConfig Config;
     public MulticoderTwitchConnection(MinecraftServer server) throws Exception
     {
+        String NLTIScripts = server.getRunDirectory().getAbsolutePath() + "/config/nlti/";
+        ScriptReader.ReadAllScripts(NLTIScripts);
         String CommandConfig = server.getRunDirectory().getAbsolutePath() + "/nlti-commands.json";
         String MainConfig = server.getRunDirectory().getAbsolutePath() + "/nlti-config.json";
         ConfigurationManager.LoadOrCreateConfig(MainConfig,CommandConfig);
+        Config.Commands_Dict.forEach((name,node) -> node.Cooldown = LocalDateTime.now());
         if(NLTI.DEBUG)
         {
             SERVER = server;

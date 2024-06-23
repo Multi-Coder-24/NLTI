@@ -1,43 +1,61 @@
 package org.multicoder.nlti.gamecommands;
 
-import com.mojang.authlib.Environment;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.minecraft.command.CommandRegistryAccess;
 import net.minecraft.server.command.ServerCommandSource;
-import net.minecraft.text.Text;
 import org.multicoder.nlti.NLTI;
-import org.multicoder.nlti.cooldowns.CooldownManager;
+import org.multicoder.nlti.mcsi.ScriptReader;
 import org.multicoder.nlti.twitch.MulticoderTwitchConnection;
-import org.multicoder.nlti.util.CommandParser;
+
+import java.time.LocalDateTime;
 
 import static net.minecraft.server.command.CommandManager.*;
 
 public class NLTICommands
 {
-    public static void RegisterCommands(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess access, RegistrationEnvironment env)
+    public static void RegisterCommands(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess ignoredAccess, RegistrationEnvironment ignoredEnv)
     {
         dispatcher.register(literal("NLTI").then(literal("Start").executes(NLTICommands::Start))).createBuilder().build();
         dispatcher.register(literal("NLTI").then(literal("Stop").executes(NLTICommands::Stop))).createBuilder().build();
         dispatcher.register(literal("NLTI").then(literal("Reset").executes(NLTICommands::Reset))).createBuilder().build();
         dispatcher.register(literal("NLTI").then(literal("Test").requires(serverCommandSource -> serverCommandSource.hasPermissionLevel(2)).then(argument("name",StringArgumentType.string()).executes(NLTICommands::Test)))).createBuilder().build();
+        dispatcher.register(literal("NLTI").then(literal("Test").then(literal("External").requires(serverCommandSource -> serverCommandSource.hasPermissionLevel(2)).then(argument("name",StringArgumentType.string()).executes(NLTICommands::TestExternal))))).createBuilder().build();
+
     }
 
-    private static int Test(CommandContext<ServerCommandSource> serverCommandSourceCommandContext) throws CommandSyntaxException {
+    private static int TestExternal(CommandContext<ServerCommandSource> context)
+    {
+        String Command = "!" + StringArgumentType.getString(context,"name").toLowerCase();
+        ScriptReader.ExecuteScript(Command);
+        return 0;
+    }
+
+    private static int Test(CommandContext<ServerCommandSource> serverCommandSourceCommandContext) {
         String Command = StringArgumentType.getString(serverCommandSourceCommandContext,"name").toLowerCase();
-        CommandParser.ParseCommand(Command,"","",true);
-        serverCommandSourceCommandContext.getSource().getPlayerOrThrow().sendMessage(Text.literal("Ran Test Of Command: ").append(Command));
+        if(MulticoderTwitchConnection.Config.Commands_Dict.containsKey(Command))
+        {
+            try
+            {
+                MulticoderTwitchConnection.Config.Commands_Dict.get(Command).Invoker.invoke(null,"Server");
+            }
+            catch (Exception ex)
+            {
+                NLTI.LOGGER.error("Error When Running: {}",Command);
+                NLTI.LOGGER.error("Caused By: ",ex);
+            }
+        }
         return 0;
     }
 
     private static int Reset(CommandContext<ServerCommandSource> context)
     {
-        for(String U : MulticoderTwitchConnection.Config.Users){
+        for(String U : MulticoderTwitchConnection.Config.Users)
+        {
             MulticoderTwitchConnection.CHAT.sendMessage(U,"Next Level Twitch Integration Cooldowns Reset");
         }
-        CooldownManager.Init();
+        MulticoderTwitchConnection.Config.Commands_Dict.forEach((name,node) -> node.Cooldown = LocalDateTime.now());
         return 0;
     }
 
