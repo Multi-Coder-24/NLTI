@@ -1,6 +1,5 @@
 package org.multicoder.nlti.mixins;
 
-import net.minecraft.block.BarrelBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ChestBlock;
 import net.minecraft.entity.player.PlayerEntity;
@@ -16,40 +15,19 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-
+@Mixin(ChestBlock.class)
 public class NoChests
 {
-    @Mixin(ChestBlock.class)
-    public static class Chests
+    @Inject(at = @At("HEAD"),method = "onUse",cancellable = true)
+    private void init(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit, CallbackInfoReturnable<ActionResult> cir)
     {
-        @Inject(at = @At("HEAD"),method = "onUse",cancellable = true)
-        private void init(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit, CallbackInfoReturnable<ActionResult> cir)
+        if(!world.isClient())
         {
-            if(!world.isClient())
+            if(!NLTI.Vars.Chests)
             {
-                if(!NLTI.Vars.Chests)
-                {
-                    cir.setReturnValue(ActionResult.CONSUME);
-                    cir.cancel();
-                    player.sendMessage(Text.literal("You cannot do that"));
-                }
-            }
-        }
-    }
-    @Mixin(BarrelBlock.class)
-    public static class Barrels
-    {
-        @Inject(at = @At("HEAD"),method = "onUse",cancellable = true)
-        private void init(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit, CallbackInfoReturnable<ActionResult> cir)
-        {
-            if(!world.isClient())
-            {
-                if(!NLTI.Vars.Chests)
-                {
-                    cir.setReturnValue(ActionResult.CONSUME);
-                    cir.cancel();
-                    player.sendMessage(Text.literal("You cannot do that"));
-                }
+                cir.setReturnValue(ActionResult.CONSUME);
+                cir.cancel();
+                player.sendMessage(Text.literal("You cannot do that"));
             }
         }
     }

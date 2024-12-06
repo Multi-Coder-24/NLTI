@@ -4,8 +4,7 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "BedBound",
-    "NoChests$Barrels",
-    "NoChests$Chests"
+    "NoChests"
   ],
   "injectors": {
     "defaultRequire": 1

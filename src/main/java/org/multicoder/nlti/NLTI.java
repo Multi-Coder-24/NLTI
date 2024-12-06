@@ -5,8 +5,6 @@ import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
-import net.minecraft.block.CommandBlock;
-import net.minecraft.registry.Registries;
 import org.multicoder.nlti.data.GlobalVars;
 import org.multicoder.nlti.events.PlayerCloneEvent;
 import org.multicoder.nlti.events.PlayerJoinedEvent;
@@ -18,9 +16,9 @@ import org.slf4j.LoggerFactory;
 
 public class NLTI implements ModInitializer
 {
-    public static final String Version = "4.0.0";
+    public static final String Version = "3.0.0";
     public static final Logger LOGGER = LoggerFactory.getLogger(NLTI.class);
-    public static final boolean DEBUG = true;
+    public static final boolean DEBUG = false;
     public static boolean FIRSTRUN = false;
     public static GlobalVars Vars;
     @Override

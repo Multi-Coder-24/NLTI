@@ -2,10 +2,9 @@ package org.multicoder.nlti.config;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import org.multicoder.nlti.util.CommandNodeBuilder;
+import org.apache.commons.lang.ArrayUtils;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class NLTIConfig
@@ -14,16 +13,67 @@ public class NLTIConfig
     private final String ClientID;
     private final String Redirect;
     protected final String Version;
+    //  Mob Commands
+    public int[] Creeper;
+    public int[] Skeleton;
+    public int[] Zombie;
+    public int[] Enderman;
+    public int[] Spider;
+    public int[] Witch;
+    public int[] Vindicator;
+    public int[] Husk;
+    public int[] Pillager;
+    public int[] Piglin;
+    public int[] Stray;
+    //  Potion Commands
+    public int[] Poison;
+    public int[] Hunger;
+    public int[] Weakness;
+    public int[] Blindness;
+    public int[] Slowness;
+    public int[] Regeneration;
+    public int[] Strength;
+    public int[] Speed;
+    public int[] Haste;
+    public int[] Resistance;
+    public int[] NightVision;
+    //  Player Commands
+    public int[] Steal;
+    public int[] Snatch;
+    public int[] Food;
+    public int[] HealthD;
+    public int[] HealthP;
+    public int[] Speed25;
+    public int[] Speed50;
+    public int[] Speed100;
+    public int[] Speed150;
+    public int[] Speed200;
+    public int[] Hungry;
+    public int[] Death;
+    public int[] Axed;
+    public int[] Pickaxed;
+    public int[] Sworded;
+    public int[] Shoveled;
+    public int[] Hoed;
+    public int[] Cake;
+    public int[] Sleepful;
+    public int[] Sleepless;
+    public int[] NoChests;
+    public int[] Chests;
+    //  World Commands
+    public int[] Thunder;
+    public int[] Rain;
+    public int[] Clear;
+    public int[] Night;
+    public int[] Day;
+    //  Properties
     public boolean ChaosMode;
     public String[] Users;
-    //  Mob Commands
-    public HashMap<String, CommandNodeBuilder.CommandNode> Commands_Dict;
 
-
-    public NLTIConfig(JsonObject Main, JsonObject Commands)
+    public NLTIConfig(JsonObject Main, JsonObject Cooldowns)
     {
 
-        //  Read Token
+        //  Main Config
         Token = Main.get("Token").getAsString();
         ClientID = Main.get("clientID").getAsString();
         Redirect = Main.get("redirectURL").getAsString();
@@ -35,12 +85,12 @@ public class NLTIConfig
         Arr.forEach(e -> UsersL.add(e.getAsString()));
         Users = UsersL.toArray(new String[0]);
 
-        Commands_Dict = new HashMap<>();
-        JsonArray CommandsArray = Commands.get("Commands").getAsJsonArray();
-        CommandsArray.forEach(jsonElement ->
+        //  Commands
+        JsonArray CommandsList = Cooldowns.getAsJsonArray("Commands");
+        CommandsList.forEach(object ->
         {
-            JsonObject Object = (JsonObject) jsonElement;
-            Commands_Dict.put(Object.get("command").getAsString(),new CommandNodeBuilder.CommandNode(Object));
+            JsonObject command = object.getAsJsonObject();
+
         });
     }
 
