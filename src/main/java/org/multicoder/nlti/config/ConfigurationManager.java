@@ -250,6 +250,8 @@ public class ConfigurationManager
         JsonObject Steal = new JsonObject();
         JsonObject Snatch = new JsonObject();
         JsonObject Food = new JsonObject();
+        JsonObject Doors = new JsonObject();
+        JsonObject NoDoors = new JsonObject();
 
         HealthD.addProperty("Trigger","!mc-healthd");
         HealthD.addProperty("CommandID","healthd|DO NOT EDIT");
@@ -356,6 +358,17 @@ public class ConfigurationManager
         Food.addProperty("NormalCooldown",180);
         Food.addProperty("ChaosCooldown",40);
 
+        Doors.addProperty("Trigger","!mc-food");
+        Doors.addProperty("CommandID","door|DO NOT EDIT");
+        Doors.addProperty("NormalCooldown",180);
+        Doors.addProperty("ChaosCooldown",40);
+        Doors.addProperty("Trigger","!mc-doors");
+
+        NoDoors.addProperty("CommandID","nodoor|DO NOT EDIT");
+        NoDoors.addProperty("NormalCooldown",180);
+        NoDoors.addProperty("ChaosCooldown",40);
+        NoDoors.addProperty("Trigger","!mc-nodoors");
+
         CommandsList.add(CreeperCommand);
         CommandsList.add(SkeletonCommand);
         CommandsList.add(ZombieCommand);
@@ -407,6 +420,8 @@ public class ConfigurationManager
         CommandsList.add(Speed200);
         CommandsList.add(Steal);
         CommandsList.add(Sworded);
+        CommandsList.add(Doors);
+        CommandsList.add(NoDoors);
 
         Object.add("Commands",CommandsList);
 

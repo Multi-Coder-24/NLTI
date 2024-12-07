@@ -16,59 +16,6 @@ public class NLTIConfig
     private final String ClientID;
     private final String Redirect;
     protected final String Version;
-    //  Mob Commands
-    public int[] Creeper;
-    public int[] Skeleton;
-    public int[] Zombie;
-    public int[] Enderman;
-    public int[] Spider;
-    public int[] Witch;
-    public int[] Vindicator;
-    public int[] Husk;
-    public int[] Pillager;
-    public int[] Piglin;
-    public int[] Stray;
-    //  Potion Commands
-    public int[] Poison;
-    public int[] Hunger;
-    public int[] Weakness;
-    public int[] Blindness;
-    public int[] Slowness;
-    public int[] Regeneration;
-    public int[] Strength;
-    public int[] Speed;
-    public int[] Haste;
-    public int[] Resistance;
-    public int[] NightVision;
-    //  Player Commands
-    public int[] Steal;
-    public int[] Snatch;
-    public int[] Food;
-    public int[] HealthD;
-    public int[] HealthP;
-    public int[] Speed25;
-    public int[] Speed50;
-    public int[] Speed100;
-    public int[] Speed150;
-    public int[] Speed200;
-    public int[] Hungry;
-    public int[] Death;
-    public int[] Axed;
-    public int[] Pickaxed;
-    public int[] Sworded;
-    public int[] Shoveled;
-    public int[] Hoed;
-    public int[] Cake;
-    public int[] Sleepful;
-    public int[] Sleepless;
-    public int[] NoChests;
-    public int[] Chests;
-    //  World Commands
-    public int[] Thunder;
-    public int[] Rain;
-    public int[] Clear;
-    public int[] Night;
-    public int[] Day;
     //  Properties
     public boolean ChaosMode;
     public String[] Users;
@@ -105,10 +52,6 @@ public class NLTIConfig
                 NLTI.LOGGER.error("Error Adding Command",e);
             }
         });
-        for(CommandInstance instance : MessageListener.Commands)
-        {
-
-        }
     }
 
     public String getToken(Class<?> invoker)

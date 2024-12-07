@@ -73,6 +73,8 @@ public class CommandInstance
             case "rain" -> Rain.Trigger(Username, Channel);
             case "thunder" -> Thunder.Trigger(Username, Channel);
             case "clear" -> Clear.Trigger(Username, Channel);
+            case "door" -> Door.Trigger(Username, Channel);
+            case "nodoor" -> NoDoor.Trigger(Username, Channel);
         }
     }
 }
