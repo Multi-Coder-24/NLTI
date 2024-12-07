@@ -12,26 +12,8 @@ public class Speed
 {
     public static void Trigger(String Username,String Channel)
     {
-        LocalDateTime Now = LocalDateTime.now();
-        if(!Now.isAfter(CooldownManager.SPEED))
-        {
-            MulticoderTwitchConnection.CHAT.sendMessage(Channel,"@" + Username + " This command is still on cooldown");
-        }
-        else
-        {
-            int Append;
-            if(MulticoderTwitchConnection.Config.ChaosMode)
-            {
-                Append = MulticoderTwitchConnection.Config.Speed[1];
-            }
-            else{
-                Append = MulticoderTwitchConnection.Config.Speed[0];
-            }
-            Now = Now.plusSeconds(Append);
-            CooldownManager.SPEED = Now;
-            MulticoderTwitchConnection.SERVER.getPlayerManager().getPlayerList().forEach(player -> player.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED,400)));
-            MulticoderTwitchConnection.SERVER.getPlayerManager().broadcast(Text.of(Username + " Has ran the command: Speed"),false);
-        }
+        MulticoderTwitchConnection.SERVER.getPlayerManager().getPlayerList().forEach(player -> player.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED,400)));
+        MulticoderTwitchConnection.SERVER.getPlayerManager().broadcast(Text.of(Username + " Has ran the command: Speed"),false);
     }
     public static void Trigger()
     {

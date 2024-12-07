@@ -12,26 +12,8 @@ public class NightTime
 {
     public static void Trigger(String Username,String Channel)
     {
-        LocalDateTime Now = LocalDateTime.now();
-        if(!Now.isAfter(CooldownManager.NIGHT_TIME))
-        {
-            MulticoderTwitchConnection.CHAT.sendMessage(Channel,"@" + Username + " This command is still on cooldown");
-        }
-        else
-        {
-            int Append;
-            if(MulticoderTwitchConnection.Config.ChaosMode)
-            {
-                Append = MulticoderTwitchConnection.Config.Night[1];
-            }
-            else{
-                Append = MulticoderTwitchConnection.Config.Night[0];
-            }
-            Now = Now.plusSeconds(Append);
-            CooldownManager.NIGHT_TIME = Now;
-            Objects.requireNonNull(MulticoderTwitchConnection.SERVER.getWorld(World.OVERWORLD),"Server.getWorld(World.OVERWORLD) returned null").setTimeOfDay(13000L);
-            MulticoderTwitchConnection.SERVER.getPlayerManager().broadcast(Text.of(Username + " Has ran the command: Night"),false);
-        }
+        Objects.requireNonNull(MulticoderTwitchConnection.SERVER.getWorld(World.OVERWORLD),"Server.getWorld(World.OVERWORLD) returned null").setTimeOfDay(13000L);
+        MulticoderTwitchConnection.SERVER.getPlayerManager().broadcast(Text.of(Username + " Has ran the command: Night"),false);
     }
     public static void Trigger()
     {

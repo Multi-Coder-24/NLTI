@@ -12,26 +12,8 @@ public class Pickaxed
 {
     public static void Trigger(String Username,String Channel)
     {
-        LocalDateTime Now = LocalDateTime.now();
-        if(!Now.isAfter(CooldownManager.PICKAXED))
-        {
-            MulticoderTwitchConnection.CHAT.sendMessage(Channel,"@" + Username + " This command is still on cooldown");
-        }
-        else
-        {
-            int Append;
-            if(MulticoderTwitchConnection.Config.ChaosMode)
-            {
-                Append = MulticoderTwitchConnection.Config.Pickaxed[1];
-            }
-            else{
-                Append = MulticoderTwitchConnection.Config.Pickaxed[0];
-            }
-            Now = Now.plusSeconds(Append);
-            CooldownManager.PICKAXED = Now;
-            MulticoderTwitchConnection.SERVER.getPlayerManager().getPlayerList().forEach(player -> player.getInventory().insertStack(new ItemStack(Items.STONE_PICKAXE,1)));
-            MulticoderTwitchConnection.SERVER.getPlayerManager().broadcast(Text.of(Username + " Has ran the command: Pickaxe"),false);
-        }
+        MulticoderTwitchConnection.SERVER.getPlayerManager().getPlayerList().forEach(player -> player.getInventory().insertStack(new ItemStack(Items.STONE_PICKAXE,1)));
+        MulticoderTwitchConnection.SERVER.getPlayerManager().broadcast(Text.of(Username + " Has ran the command: Pickaxe"),false);
     }
     public static void Trigger()
     {

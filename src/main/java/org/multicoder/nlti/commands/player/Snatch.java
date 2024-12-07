@@ -12,39 +12,21 @@ public class Snatch
 {
     public static void Trigger(String Username,String Channel)
     {
-        LocalDateTime Now = LocalDateTime.now();
-        if(!Now.isAfter(CooldownManager.SNATCH))
+        Random rng = new Random();
+        MulticoderTwitchConnection.SERVER.getPlayerManager().getPlayerList().forEach(player ->
         {
-            MulticoderTwitchConnection.CHAT.sendMessage(Channel,"@" + Username + " This command is still on cooldown");
-        }
-        else
-        {
-            int Append;
-            if(MulticoderTwitchConnection.Config.ChaosMode)
-            {
-                Append = MulticoderTwitchConnection.Config.Snatch[1];
+            int MaxValue = player.getInventory().size();
+            int MinValue = 0;
+            int Index = rng.nextInt(MinValue,MaxValue);
+            if(player.getInventory().getStack(Index) != ItemStack.EMPTY){
+                MulticoderTwitchConnection.CHAT.sendMessage(Channel,"@" + Username + " Congratulations RNG was in your favor");
             }
             else{
-                Append = MulticoderTwitchConnection.Config.Snatch[0];
+                MulticoderTwitchConnection.CHAT.sendMessage(Channel,"@" + Username + " Unluckily RNG was not in your favor");
             }
-            Now = Now.plusSeconds(Append);
-            CooldownManager.SNATCH = Now;
-            Random rng = new Random();
-            MulticoderTwitchConnection.SERVER.getPlayerManager().getPlayerList().forEach(player ->
-            {
-                int MaxValue = player.getInventory().size();
-                int MinValue = 0;
-                int Index = rng.nextInt(MinValue,MaxValue);
-                if(player.getInventory().getStack(Index) != ItemStack.EMPTY){
-                    MulticoderTwitchConnection.CHAT.sendMessage(Channel,"@" + Username + " Congratulations RNG was in your favor");
-                }
-                else{
-                    MulticoderTwitchConnection.CHAT.sendMessage(Channel,"@" + Username + " Unluckily RNG was not in your favor");
-                }
-                player.getInventory().removeStack(Index);
-            });
-            MulticoderTwitchConnection.SERVER.getPlayerManager().broadcast(Text.of(Username + " Has ran the command: Snatch"),false);
-        }
+            player.getInventory().removeStack(Index);
+        });
+        MulticoderTwitchConnection.SERVER.getPlayerManager().broadcast(Text.of(Username + " Has ran the command: Snatch"),false);
     }
     public static void Trigger()
     {

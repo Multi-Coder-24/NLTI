@@ -12,26 +12,8 @@ public class Resistance
 {
     public static void Trigger(String Username,String Channel)
     {
-        LocalDateTime Now = LocalDateTime.now();
-        if(!Now.isAfter(CooldownManager.RESISTANCE))
-        {
-            MulticoderTwitchConnection.CHAT.sendMessage(Channel,"@" + Username + " This command is still on cooldown");
-        }
-        else
-        {
-            int Append;
-            if(MulticoderTwitchConnection.Config.ChaosMode)
-            {
-                Append = MulticoderTwitchConnection.Config.Resistance[1];
-            }
-            else{
-                Append = MulticoderTwitchConnection.Config.Resistance[0];
-            }
-            Now = Now.plusSeconds(Append);
-            CooldownManager.RESISTANCE = Now;
-            MulticoderTwitchConnection.SERVER.getPlayerManager().getPlayerList().forEach(player -> player.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE,400)));
-            MulticoderTwitchConnection.SERVER.getPlayerManager().broadcast(Text.of(Username + " Has ran the command: Resistance"),false);
-        }
+        MulticoderTwitchConnection.SERVER.getPlayerManager().getPlayerList().forEach(player -> player.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE,400)));
+        MulticoderTwitchConnection.SERVER.getPlayerManager().broadcast(Text.of(Username + " Has ran the command: Resistance"),false);
     }
     public static void Trigger()
     {

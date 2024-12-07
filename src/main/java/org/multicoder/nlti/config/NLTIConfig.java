@@ -3,6 +3,9 @@ package org.multicoder.nlti.config;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import org.apache.commons.lang.ArrayUtils;
+import org.multicoder.nlti.NLTI;
+import org.multicoder.nlti.commands.CommandInstance;
+import org.multicoder.nlti.twitch.MessageListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -90,8 +93,22 @@ public class NLTIConfig
         CommandsList.forEach(object ->
         {
             JsonObject command = object.getAsJsonObject();
-
+            String CommandID = command.get("CommandID").getAsString().split("\\|")[0];
+            String Trigger = command.get("Trigger").getAsString();
+            int NormalCooldown = command.get("NormalCooldown").getAsInt();
+            int ChaosCooldown = command.get("ChaosCooldown").getAsInt();
+            try
+            {
+                MessageListener.Commands.add(new CommandInstance(Trigger,new int[] {NormalCooldown,ChaosCooldown},CommandID));
+            }
+            catch(Exception e){
+                NLTI.LOGGER.error("Error Adding Command",e);
+            }
         });
+        for(CommandInstance instance : MessageListener.Commands)
+        {
+
+        }
     }
 
     public String getToken(Class<?> invoker)

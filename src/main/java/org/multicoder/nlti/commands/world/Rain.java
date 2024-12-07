@@ -12,24 +12,8 @@ public class Rain
 {
     public static void Trigger(String Username,String Channel)
     {
-        LocalDateTime Now = LocalDateTime.now();
-        if(!Now.isAfter(CooldownManager.RAIN))
-        {
-            MulticoderTwitchConnection.CHAT.sendMessage(Channel,"@" + Username + " This command is still on cooldown");
-        }
-        else {
-            int Append;
-            if (MulticoderTwitchConnection.Config.ChaosMode) {
-                Append = MulticoderTwitchConnection.Config.Rain[1];
-            } else {
-                Append = MulticoderTwitchConnection.Config.Rain[0];
-            }
-            Now = Now.plusSeconds(Append);
-            CooldownManager.RAIN = Now;
-            Objects.requireNonNull(MulticoderTwitchConnection.SERVER.getWorld(World.OVERWORLD),"Server.getWorld(World.OVERWORLD) returned null").setWeather(0, -1, true, false);
-            MulticoderTwitchConnection.SERVER.getPlayerManager().broadcast(Text.of(Username + " Has ran the command: Weather Rain"),false);
-
-        }
+        Objects.requireNonNull(MulticoderTwitchConnection.SERVER.getWorld(World.OVERWORLD),"Server.getWorld(World.OVERWORLD) returned null").setWeather(0, -1, true, false);
+        MulticoderTwitchConnection.SERVER.getPlayerManager().broadcast(Text.of(Username + " Has ran the command: Weather Rain"),false);
     }
     public static void Trigger()
     {
