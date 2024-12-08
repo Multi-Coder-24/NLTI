@@ -14,8 +14,4 @@ public class NoChests
         NLTI.Vars.UpdateChests(false);
         MulticoderTwitchConnection.SERVER.getPlayerManager().broadcast(Text.of(User + " Has ran the command: No Chests"),false);
     }
-    public static void Trigger()
-    {
-        NLTI.Vars.UpdateChests(false);
-    }
 }

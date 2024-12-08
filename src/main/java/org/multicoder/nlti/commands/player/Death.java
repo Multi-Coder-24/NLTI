@@ -14,8 +14,4 @@ public class Death
         MulticoderTwitchConnection.SERVER.getPlayerManager().getPlayerList().forEach(LivingEntity::kill);
         MulticoderTwitchConnection.SERVER.getPlayerManager().broadcast(Text.of(User + " Has ran the command: Death"),false);
     }
-    public static void Trigger()
-    {
-        MulticoderTwitchConnection.SERVER.getPlayerManager().getPlayerList().forEach(LivingEntity::kill);
-    }
 }

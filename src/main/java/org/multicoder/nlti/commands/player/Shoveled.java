@@ -15,8 +15,4 @@ public class Shoveled
         MulticoderTwitchConnection.SERVER.getPlayerManager().getPlayerList().forEach(player -> player.getInventory().insertStack(new ItemStack(Items.STONE_SHOVEL,1)));
         MulticoderTwitchConnection.SERVER.getPlayerManager().broadcast(Text.of(Username + " Has ran the command: Shovel"),false);
     }
-    public static void Trigger()
-    {
-        MulticoderTwitchConnection.SERVER.getPlayerManager().getPlayerList().forEach(player -> player.getInventory().insertStack(new ItemStack(Items.STONE_SHOVEL,1)));
-    }
 }

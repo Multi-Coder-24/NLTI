@@ -14,8 +14,4 @@ public class Hoed
     {
         MulticoderTwitchConnection.SERVER.getPlayerManager().getPlayerList().forEach(player -> player.getInventory().insertStack(new ItemStack(Items.STONE_HOE,1)));
         MulticoderTwitchConnection.SERVER.getPlayerManager().broadcast(Text.of(Username + " Has ran the command: Hoe"),false);    }
-    public static void Trigger()
-    {
-        MulticoderTwitchConnection.SERVER.getPlayerManager().getPlayerList().forEach(player -> player.getInventory().insertStack(new ItemStack(Items.STONE_HOE,1)));
-    }
 }

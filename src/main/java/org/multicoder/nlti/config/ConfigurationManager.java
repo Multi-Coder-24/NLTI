@@ -72,6 +72,16 @@ public class ConfigurationManager
         JsonObject PillagerCommand = new JsonObject();
         JsonObject PiglinCommand = new JsonObject();
         JsonObject StrayCommand = new JsonObject();
+        JsonObject CowCommand = new JsonObject();
+        JsonObject ChickenCommand = new JsonObject();
+        JsonObject PigCommand = new JsonObject();
+        JsonObject SheepCommand = new JsonObject();
+        JsonObject Blaze = new JsonObject();
+        JsonObject Evoker = new JsonObject();
+        JsonObject Ravager = new JsonObject();
+        JsonObject Slime = new JsonObject();
+        JsonObject Vex = new JsonObject();
+        JsonObject WitherSkeleton = new JsonObject();
 
         CreeperCommand.addProperty("Trigger","!mc-creeper");
         CreeperCommand.addProperty("CommandID","creeper|DO NOT EDIT");
@@ -127,6 +137,56 @@ public class ConfigurationManager
         StrayCommand.addProperty("CommandID","stray|DO NOT EDIT");
         StrayCommand.addProperty("NormalCooldown",60);
         StrayCommand.addProperty("ChaosCooldown",20);
+
+        CowCommand.addProperty("Trigger","!mc-cow");
+        CowCommand.addProperty("CommandID","cow|DO NOT EDIT");
+        CowCommand.addProperty("NormalCooldown",60);
+        CowCommand.addProperty("ChaosCooldown",20);
+
+        ChickenCommand.addProperty("Trigger","!mc-chicken");
+        ChickenCommand.addProperty("CommandID","chicken|DO NOT EDIT");
+        ChickenCommand.addProperty("NormalCooldown",60);
+        ChickenCommand.addProperty("ChaosCooldown",20);
+
+        PigCommand.addProperty("Trigger","!mc-pig");
+        PigCommand.addProperty("CommandID","pig|DO NOT EDIT");
+        PigCommand.addProperty("NormalCooldown",60);
+        PigCommand.addProperty("ChaosCooldown",20);
+
+        SheepCommand.addProperty("Trigger","!mc-sheep");
+        SheepCommand.addProperty("CommandID","sheep|DO NOT EDIT");
+        SheepCommand.addProperty("NormalCooldown",60);
+        SheepCommand.addProperty("ChaosCooldown",20);
+
+        Blaze.addProperty("Trigger","!mc-blaze");
+        Blaze.addProperty("CommandID","blaze|DO NOT EDIT");
+        Blaze.addProperty("NormalCooldown",60);
+        Blaze.addProperty("ChaosCooldown",20);
+
+        Evoker.addProperty("Trigger","!mc-evoker");
+        Evoker.addProperty("CommandID","evoker|DO NOT EDIT");
+        Evoker.addProperty("NormalCooldown",60);
+        Evoker.addProperty("ChaosCooldown",20);
+
+        Ravager.addProperty("Trigger","!mc-ravager");
+        Ravager.addProperty("CommandID","ravager|DO NOT EDIT");
+        Ravager.addProperty("NormalCooldown",60);
+        Ravager.addProperty("ChaosCooldown",20);
+
+        Slime.addProperty("Trigger","!mc-slime");
+        Slime.addProperty("CommandID","slime|DO NOT EDIT");
+        Slime.addProperty("NormalCooldown",60);
+        Slime.addProperty("ChaosCooldown",20);
+
+        Vex.addProperty("Trigger","!mc-vex");
+        Vex.addProperty("CommandID","vex|DO NOT EDIT");
+        Vex.addProperty("NormalCooldown",60);
+        Vex.addProperty("ChaosCooldown",20);
+
+        WitherSkeleton.addProperty("Trigger","!mc-witherskeleton");
+        WitherSkeleton.addProperty("CommandID","witherskeleton|DO NOT EDIT");
+        WitherSkeleton.addProperty("NormalCooldown",60);
+        WitherSkeleton.addProperty("ChaosCooldown",20);
 
         //  Effect Commands
         JsonObject PoisonCommand = new JsonObject();
@@ -252,6 +312,9 @@ public class ConfigurationManager
         JsonObject Food = new JsonObject();
         JsonObject Doors = new JsonObject();
         JsonObject NoDoors = new JsonObject();
+        JsonObject Jump = new JsonObject();
+        JsonObject Crouch = new JsonObject();
+
 
         HealthD.addProperty("Trigger","!mc-healthd");
         HealthD.addProperty("CommandID","healthd|DO NOT EDIT");
@@ -320,8 +383,8 @@ public class ConfigurationManager
 
         Death.addProperty("Trigger","!mc-death");
         Death.addProperty("CommandID","death|DO NOT EDIT");
-        Death.addProperty("NormalCooldown",180);
-        Death.addProperty("ChaosCooldown",40);
+        Death.addProperty("NormalCooldown",300);
+        Death.addProperty("ChaosCooldown",150);
 
         Sleepful.addProperty("Trigger","!mc-sleepful");
         Sleepful.addProperty("CommandID","sleepful|DO NOT EDIT");
@@ -358,16 +421,25 @@ public class ConfigurationManager
         Food.addProperty("NormalCooldown",180);
         Food.addProperty("ChaosCooldown",40);
 
-        Doors.addProperty("Trigger","!mc-food");
+        Doors.addProperty("Trigger","!mc-doors");
         Doors.addProperty("CommandID","door|DO NOT EDIT");
         Doors.addProperty("NormalCooldown",180);
         Doors.addProperty("ChaosCooldown",40);
-        Doors.addProperty("Trigger","!mc-doors");
 
+        NoDoors.addProperty("Trigger","!mc-nodoors");
         NoDoors.addProperty("CommandID","nodoor|DO NOT EDIT");
         NoDoors.addProperty("NormalCooldown",180);
         NoDoors.addProperty("ChaosCooldown",40);
-        NoDoors.addProperty("Trigger","!mc-nodoors");
+
+        Jump.addProperty("Trigger","!mc-jump");
+        Jump.addProperty("CommandID","jump|DO NOT EDIT");
+        Jump.addProperty("NormalCooldown",300);
+        Jump.addProperty("ChaosCooldown",150);
+
+        Crouch.addProperty("Trigger","!mc-crouch");
+        Crouch.addProperty("CommandID","crouch|DO NOT EDIT");
+        Crouch.addProperty("NormalCooldown",300);
+        Crouch.addProperty("ChaosCooldown",150);
 
         CommandsList.add(CreeperCommand);
         CommandsList.add(SkeletonCommand);
@@ -380,6 +452,16 @@ public class ConfigurationManager
         CommandsList.add(PillagerCommand);
         CommandsList.add(PiglinCommand);
         CommandsList.add(HuskCommand);
+        CommandsList.add(CowCommand);
+        CommandsList.add(ChickenCommand);
+        CommandsList.add(PigCommand);
+        CommandsList.add(SheepCommand);
+        CommandsList.add(Blaze);
+        CommandsList.add(Evoker);
+        CommandsList.add(Ravager);
+        CommandsList.add(Slime);
+        CommandsList.add(Vex);
+        CommandsList.add(WitherSkeleton);
 
         CommandsList.add(BlindnessCommand);
         CommandsList.add(HasteCommand);
@@ -422,10 +504,10 @@ public class ConfigurationManager
         CommandsList.add(Sworded);
         CommandsList.add(Doors);
         CommandsList.add(NoDoors);
+        CommandsList.add(Jump);
+        CommandsList.add(Crouch);
 
         Object.add("Commands",CommandsList);
-
-
         JsonWriter WriterJ = new JsonWriter(new FileWriter(Location));
         G.toJson(Object,WriterJ);
         WriterJ.flush();

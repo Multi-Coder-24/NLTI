@@ -22,15 +22,4 @@ public class HealthD
         });
         MulticoderTwitchConnection.SERVER.getPlayerManager().broadcast(Text.of(Username + " Has ran the command: Health Minus"),false);
     }
-    public static void Trigger()
-    {
-        MulticoderTwitchConnection.SERVER.getPlayerManager().getPlayerList().forEach(player ->
-        {
-            double MaxHealth = player.getAttributeBaseValue(EntityAttributes.GENERIC_MAX_HEALTH);
-            if(MaxHealth != 2)
-            {
-                Objects.requireNonNull(player.getAttributes().getCustomInstance(EntityAttributes.GENERIC_MAX_HEALTH),"player.getAttributes().getCustomInstance(EntityAttributes.GENERIC_MAX_HEALTH) returned null").setBaseValue(MaxHealth - 2);
-            }
-        });
-    }
 }

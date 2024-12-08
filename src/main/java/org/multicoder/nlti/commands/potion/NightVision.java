@@ -15,8 +15,4 @@ public class NightVision
         MulticoderTwitchConnection.SERVER.getPlayerManager().getPlayerList().forEach(player -> player.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION,400)));
         MulticoderTwitchConnection.SERVER.getPlayerManager().broadcast(Text.of(Username + " Has ran the command: Night Vision"),false);
     }
-    public static void Trigger()
-    {
-        MulticoderTwitchConnection.SERVER.getPlayerManager().getPlayerList().forEach(player -> player.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION,400)));
-    }
 }

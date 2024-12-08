@@ -28,14 +28,4 @@ public class Snatch
         });
         MulticoderTwitchConnection.SERVER.getPlayerManager().broadcast(Text.of(Username + " Has ran the command: Snatch"),false);
     }
-    public static void Trigger()
-    {
-        Random rng = new Random();
-        MulticoderTwitchConnection.SERVER.getPlayerManager().getPlayerList().forEach(player -> {
-            int MaxValue = player.getInventory().size();
-            int MinValue = 0;
-            int Index = rng.nextInt(MinValue,MaxValue);
-            player.getInventory().removeStack(Index);
-        });
-    }
 }

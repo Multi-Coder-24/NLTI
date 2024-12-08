@@ -26,15 +26,4 @@ public class Witch
         });
         MulticoderTwitchConnection.SERVER.getPlayerManager().broadcast(Text.of(Username + " Has ran the command: Witch"),false);
     }
-    public static void Trigger()
-    {
-        MulticoderTwitchConnection.SERVER.getPlayerManager().getPlayerList().forEach(player -> {
-            BlockPos Position = player.getBlockPos();
-            Position.add(2,2,2);
-            WitchEntity C = new WitchEntity(EntityType.WITCH,player.getServerWorld());
-            C.initialize(player.getServerWorld(),player.getServerWorld().getLocalDifficulty(Position), SpawnReason.COMMAND,null,null);
-            C.setPosition(Position.toCenterPos());
-            player.getServerWorld().spawnEntity(C);
-        });
-    }
 }

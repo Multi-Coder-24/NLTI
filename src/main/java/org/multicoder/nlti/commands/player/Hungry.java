@@ -17,11 +17,4 @@ public class Hungry
         MulticoderTwitchConnection.SERVER.getPlayerManager().broadcast(Text.of(Username + " Has ran the command: Hungry"),false);
 
     }
-    public static void Trigger()
-    {
-        MulticoderTwitchConnection.SERVER.getPlayerManager().getPlayerList().forEach(player ->{
-            player.getHungerManager().setFoodLevel(2);
-            player.getHungerManager().setSaturationLevel(0f);
-        });
-    }
 }

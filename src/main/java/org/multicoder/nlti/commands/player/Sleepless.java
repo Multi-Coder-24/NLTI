@@ -14,8 +14,4 @@ public class Sleepless
         NLTI.Vars.UpdateSleepVar(false);
         MulticoderTwitchConnection.SERVER.getPlayerManager().broadcast(Text.of(User + " Has ran the command: Sleepless"),false);
     }
-    public static void Trigger()
-    {
-        NLTI.Vars.UpdateSleepVar(false);
-    }
 }

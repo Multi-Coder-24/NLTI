@@ -11,8 +11,4 @@ public class Door
         NLTI.Vars.UpdateDoors(true);
         MulticoderTwitchConnection.SERVER.getPlayerManager().broadcast(Text.of(User + " Has ran the command: Doors"),false);
     }
-    public static void Trigger()
-    {
-        NLTI.Vars.UpdateChests(true);
-    }
 }

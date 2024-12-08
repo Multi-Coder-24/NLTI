@@ -11,8 +11,4 @@ public class NoDoor
         NLTI.Vars.UpdateDoors(false);
         MulticoderTwitchConnection.SERVER.getPlayerManager().broadcast(Text.of(User + " Has ran the command: No Doors"),false);
     }
-    public static void Trigger()
-    {
-        NLTI.Vars.UpdateChests(false);
-    }
 }

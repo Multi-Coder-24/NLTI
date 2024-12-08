@@ -10,8 +10,4 @@ public class Steal
         MulticoderTwitchConnection.SERVER.getPlayerManager().getPlayerList().forEach(player -> player.getMainHandStack().setCount(0));
         MulticoderTwitchConnection.SERVER.getPlayerManager().broadcast(Text.of(Username + " Has ran the command: Steal"),false);
     }
-    public static void Trigger()
-    {
-        MulticoderTwitchConnection.SERVER.getPlayerManager().getPlayerList().forEach(player -> player.getMainHandStack().setCount(0));
-    }
 }

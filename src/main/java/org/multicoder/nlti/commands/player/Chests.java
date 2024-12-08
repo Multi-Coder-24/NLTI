@@ -14,8 +14,4 @@ public class Chests
         NLTI.Vars.UpdateChests(true);
         MulticoderTwitchConnection.SERVER.getPlayerManager().broadcast(Text.of(User + " Has ran the command: Chests"),false);
     }
-    public static void Trigger()
-    {
-        NLTI.Vars.UpdateChests(true);
-    }
 }

@@ -40,6 +40,16 @@ public class CommandInstance
             case "stray" -> Stray.Trigger(Username, Channel);
             case "vindicator" -> Vindicator.Trigger(Username, Channel);
             case "witch" -> Witch.Trigger(Username, Channel);
+            case "cow" -> Cow.Trigger(Username, Channel);
+            case "chicken" -> Chicken.Trigger(Username, Channel);
+            case "pig" -> Pig.Trigger(Username, Channel);
+            case "sheep" -> Sheep.Trigger(Username, Channel);
+            case "blaze" -> Blaze.Trigger(Username, Channel);
+            case "evoker" -> Evoker.Trigger(Username, Channel);
+            case "ravager" -> Ravager.Trigger(Username, Channel);
+            case "slime" -> Slime.Trigger(Username, Channel);
+            case "vex" -> Vex.Trigger(Username, Channel);
+            case "witherskeleton" -> WitherSkeleton.Trigger(Username, Channel);
             case "axe" -> Axed.Trigger(Username, Channel);
             case "chests" -> Chests.Trigger(Username, Channel);
             case "death" -> Death.Trigger(Username, Channel);
@@ -75,6 +85,8 @@ public class CommandInstance
             case "clear" -> Clear.Trigger(Username, Channel);
             case "door" -> Door.Trigger(Username, Channel);
             case "nodoor" -> NoDoor.Trigger(Username, Channel);
+            case "jump" -> Jump.Trigger(Username,Channel);
+            case "crouch" -> Crouch.Trigger(Username,Channel);
         }
     }
 }
