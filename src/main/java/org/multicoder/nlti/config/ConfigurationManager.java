@@ -13,51 +13,44 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 
-public class ConfigurationManager
-{
-    public static void LoadOrCreateConfig(String MainConfig, String CooldownConfig) throws Exception
-    {
+public class ConfigurationManager {
+    public static void LoadOrCreateConfig(String MainConfig, String CooldownConfig) throws Exception {
         Gson G = new Gson();
         File Main = new File(MainConfig);
         File Cooldown = new File(CooldownConfig);
-        if(!Main.exists())
-        {
+        if (!Main.exists()) {
             NLTI.LOGGER.info("First Run");
             //  First Run
-            GenerateMainConfig(new JsonObject(),Main,G);
-            GenerateCooldownConfig(new JsonObject(),Cooldown,G);
+            GenerateMainConfig(new JsonObject(), Main, G);
+            GenerateCooldownConfig(new JsonObject(), Cooldown, G);
             NLTI.FIRSTRUN = true;
-        }
-        else
-        {
+        } else {
             NLTI.LOGGER.info("Initializing Config");
             JsonReader MainReader = new JsonReader(new FileReader(Main));
             JsonReader CooldownReader = new JsonReader(new FileReader(Cooldown));
-            JsonObject MainConfigJSON = G.fromJson(MainReader,JsonObject.class);
-            JsonObject CooldownConfigJSON = G.fromJson(CooldownReader,JsonObject.class);
-            MulticoderTwitchConnection.Config = new NLTIConfig(MainConfigJSON,CooldownConfigJSON);
+            JsonObject MainConfigJSON = G.fromJson(MainReader, JsonObject.class);
+            JsonObject CooldownConfigJSON = G.fromJson(CooldownReader, JsonObject.class);
+            MulticoderTwitchConnection.Config = new NLTIConfig(MainConfigJSON, CooldownConfigJSON);
         }
     }
 
-    public static void GenerateMainConfig(@NotNull JsonObject Object, @NotNull File Location, @NotNull Gson G) throws Exception
-    {
-        Object.addProperty("Token","**");
-        Object.addProperty("clientID","**");
-        Object.addProperty("redirectURL","**");
-        Object.addProperty("Version",NLTI.Version);
-        Object.addProperty("ChaosMode",false);
+    public static void GenerateMainConfig(@NotNull JsonObject Object, @NotNull File Location, @NotNull Gson G) throws Exception {
+        Object.addProperty("Token", "**");
+        Object.addProperty("clientID", "**");
+        Object.addProperty("redirectURL", "**");
+        Object.addProperty("Version", NLTI.Version);
+        Object.addProperty("ChaosMode", false);
         JsonArray Usernames = new JsonArray();
         Usernames.add("examplename");
         Usernames.add("collaborator");
-        Object.add("Usernames",Usernames);
+        Object.add("Usernames", Usernames);
         JsonWriter WriterJ = new JsonWriter(new FileWriter(Location));
-        G.toJson(Object,WriterJ);
+        G.toJson(Object, WriterJ);
         WriterJ.flush();
         WriterJ.close();
     }
 
-    public static void GenerateCooldownConfig(@NotNull JsonObject Object,@NotNull File Location,@NotNull Gson G) throws Exception
-    {
+    public static void GenerateCooldownConfig(@NotNull JsonObject Object, @NotNull File Location, @NotNull Gson G) throws Exception {
         JsonArray CommandsList = new JsonArray();
 
         //  Mob Spawn Commands
@@ -83,110 +76,110 @@ public class ConfigurationManager
         JsonObject Vex = new JsonObject();
         JsonObject WitherSkeleton = new JsonObject();
 
-        CreeperCommand.addProperty("Trigger","!mc-creeper");
-        CreeperCommand.addProperty("CommandID","creeper|DO NOT EDIT");
-        CreeperCommand.addProperty("NormalCooldown",60);
-        CreeperCommand.addProperty("ChaosCooldown",20);
+        CreeperCommand.addProperty("Trigger", "!mc-creeper");
+        CreeperCommand.addProperty("CommandID", "creeper|DO NOT EDIT");
+        CreeperCommand.addProperty("NormalCooldown", 60);
+        CreeperCommand.addProperty("ChaosCooldown", 20);
 
-        SkeletonCommand.addProperty("Trigger","!mc-skeleton");
-        SkeletonCommand.addProperty("CommandID","skeleton|DO NOT EDIT");
-        SkeletonCommand.addProperty("NormalCooldown",60);
-        SkeletonCommand.addProperty("ChaosCooldown",20);
+        SkeletonCommand.addProperty("Trigger", "!mc-skeleton");
+        SkeletonCommand.addProperty("CommandID", "skeleton|DO NOT EDIT");
+        SkeletonCommand.addProperty("NormalCooldown", 60);
+        SkeletonCommand.addProperty("ChaosCooldown", 20);
 
-        ZombieCommand.addProperty("Trigger","!mc-zombie");
-        ZombieCommand.addProperty("CommandID","zombie|DO NOT EDIT");
-        ZombieCommand.addProperty("NormalCooldown",60);
-        ZombieCommand.addProperty("ChaosCooldown",20);
+        ZombieCommand.addProperty("Trigger", "!mc-zombie");
+        ZombieCommand.addProperty("CommandID", "zombie|DO NOT EDIT");
+        ZombieCommand.addProperty("NormalCooldown", 60);
+        ZombieCommand.addProperty("ChaosCooldown", 20);
 
-        EndermanCommand.addProperty("Trigger","!mc-enderman");
-        EndermanCommand.addProperty("CommandID","enderman|DO NOT EDIT");
-        EndermanCommand.addProperty("NormalCooldown",60);
-        EndermanCommand.addProperty("ChaosCooldown",20);
+        EndermanCommand.addProperty("Trigger", "!mc-enderman");
+        EndermanCommand.addProperty("CommandID", "enderman|DO NOT EDIT");
+        EndermanCommand.addProperty("NormalCooldown", 60);
+        EndermanCommand.addProperty("ChaosCooldown", 20);
 
-        SpiderCommand.addProperty("Trigger","!mc-spider");
-        SpiderCommand.addProperty("CommandID","spider|DO NOT EDIT");
-        SpiderCommand.addProperty("NormalCooldown",60);
-        SpiderCommand.addProperty("ChaosCooldown",20);
+        SpiderCommand.addProperty("Trigger", "!mc-spider");
+        SpiderCommand.addProperty("CommandID", "spider|DO NOT EDIT");
+        SpiderCommand.addProperty("NormalCooldown", 60);
+        SpiderCommand.addProperty("ChaosCooldown", 20);
 
-        WitchCommand.addProperty("Trigger","!mc-witch");
-        WitchCommand.addProperty("CommandID","witch|DO NOT EDIT");
-        WitchCommand.addProperty("NormalCooldown",60);
-        WitchCommand.addProperty("ChaosCooldown",20);
+        WitchCommand.addProperty("Trigger", "!mc-witch");
+        WitchCommand.addProperty("CommandID", "witch|DO NOT EDIT");
+        WitchCommand.addProperty("NormalCooldown", 60);
+        WitchCommand.addProperty("ChaosCooldown", 20);
 
-        VindicatorCommand.addProperty("Trigger","!mc-vindicator");
-        VindicatorCommand.addProperty("CommandID","vindicator|DO NOT EDIT");
-        VindicatorCommand.addProperty("NormalCooldown",60);
-        VindicatorCommand.addProperty("ChaosCooldown",20);
+        VindicatorCommand.addProperty("Trigger", "!mc-vindicator");
+        VindicatorCommand.addProperty("CommandID", "vindicator|DO NOT EDIT");
+        VindicatorCommand.addProperty("NormalCooldown", 60);
+        VindicatorCommand.addProperty("ChaosCooldown", 20);
 
-        HuskCommand.addProperty("Trigger","!mc-husk");
-        HuskCommand.addProperty("CommandID","husk|DO NOT EDIT");
-        HuskCommand.addProperty("NormalCooldown",60);
-        HuskCommand.addProperty("ChaosCooldown",20);
+        HuskCommand.addProperty("Trigger", "!mc-husk");
+        HuskCommand.addProperty("CommandID", "husk|DO NOT EDIT");
+        HuskCommand.addProperty("NormalCooldown", 60);
+        HuskCommand.addProperty("ChaosCooldown", 20);
 
-        PillagerCommand.addProperty("Trigger","!mc-pillager");
-        PillagerCommand.addProperty("CommandID","pillager|DO NOT EDIT");
-        PillagerCommand.addProperty("NormalCooldown",60);
-        PillagerCommand.addProperty("ChaosCooldown",20);
+        PillagerCommand.addProperty("Trigger", "!mc-pillager");
+        PillagerCommand.addProperty("CommandID", "pillager|DO NOT EDIT");
+        PillagerCommand.addProperty("NormalCooldown", 60);
+        PillagerCommand.addProperty("ChaosCooldown", 20);
 
-        PiglinCommand.addProperty("Trigger","!mc-piglin");
-        PiglinCommand.addProperty("CommandID","piglin|DO NOT EDIT");
-        PiglinCommand.addProperty("NormalCooldown",60);
-        PiglinCommand.addProperty("ChaosCooldown",20);
+        PiglinCommand.addProperty("Trigger", "!mc-piglin");
+        PiglinCommand.addProperty("CommandID", "piglin|DO NOT EDIT");
+        PiglinCommand.addProperty("NormalCooldown", 60);
+        PiglinCommand.addProperty("ChaosCooldown", 20);
 
-        StrayCommand.addProperty("Trigger","!mc-stray");
-        StrayCommand.addProperty("CommandID","stray|DO NOT EDIT");
-        StrayCommand.addProperty("NormalCooldown",60);
-        StrayCommand.addProperty("ChaosCooldown",20);
+        StrayCommand.addProperty("Trigger", "!mc-stray");
+        StrayCommand.addProperty("CommandID", "stray|DO NOT EDIT");
+        StrayCommand.addProperty("NormalCooldown", 60);
+        StrayCommand.addProperty("ChaosCooldown", 20);
 
-        CowCommand.addProperty("Trigger","!mc-cow");
-        CowCommand.addProperty("CommandID","cow|DO NOT EDIT");
-        CowCommand.addProperty("NormalCooldown",60);
-        CowCommand.addProperty("ChaosCooldown",20);
+        CowCommand.addProperty("Trigger", "!mc-cow");
+        CowCommand.addProperty("CommandID", "cow|DO NOT EDIT");
+        CowCommand.addProperty("NormalCooldown", 60);
+        CowCommand.addProperty("ChaosCooldown", 20);
 
-        ChickenCommand.addProperty("Trigger","!mc-chicken");
-        ChickenCommand.addProperty("CommandID","chicken|DO NOT EDIT");
-        ChickenCommand.addProperty("NormalCooldown",60);
-        ChickenCommand.addProperty("ChaosCooldown",20);
+        ChickenCommand.addProperty("Trigger", "!mc-chicken");
+        ChickenCommand.addProperty("CommandID", "chicken|DO NOT EDIT");
+        ChickenCommand.addProperty("NormalCooldown", 60);
+        ChickenCommand.addProperty("ChaosCooldown", 20);
 
-        PigCommand.addProperty("Trigger","!mc-pig");
-        PigCommand.addProperty("CommandID","pig|DO NOT EDIT");
-        PigCommand.addProperty("NormalCooldown",60);
-        PigCommand.addProperty("ChaosCooldown",20);
+        PigCommand.addProperty("Trigger", "!mc-pig");
+        PigCommand.addProperty("CommandID", "pig|DO NOT EDIT");
+        PigCommand.addProperty("NormalCooldown", 60);
+        PigCommand.addProperty("ChaosCooldown", 20);
 
-        SheepCommand.addProperty("Trigger","!mc-sheep");
-        SheepCommand.addProperty("CommandID","sheep|DO NOT EDIT");
-        SheepCommand.addProperty("NormalCooldown",60);
-        SheepCommand.addProperty("ChaosCooldown",20);
+        SheepCommand.addProperty("Trigger", "!mc-sheep");
+        SheepCommand.addProperty("CommandID", "sheep|DO NOT EDIT");
+        SheepCommand.addProperty("NormalCooldown", 60);
+        SheepCommand.addProperty("ChaosCooldown", 20);
 
-        Blaze.addProperty("Trigger","!mc-blaze");
-        Blaze.addProperty("CommandID","blaze|DO NOT EDIT");
-        Blaze.addProperty("NormalCooldown",60);
-        Blaze.addProperty("ChaosCooldown",20);
+        Blaze.addProperty("Trigger", "!mc-blaze");
+        Blaze.addProperty("CommandID", "blaze|DO NOT EDIT");
+        Blaze.addProperty("NormalCooldown", 60);
+        Blaze.addProperty("ChaosCooldown", 20);
 
-        Evoker.addProperty("Trigger","!mc-evoker");
-        Evoker.addProperty("CommandID","evoker|DO NOT EDIT");
-        Evoker.addProperty("NormalCooldown",60);
-        Evoker.addProperty("ChaosCooldown",20);
+        Evoker.addProperty("Trigger", "!mc-evoker");
+        Evoker.addProperty("CommandID", "evoker|DO NOT EDIT");
+        Evoker.addProperty("NormalCooldown", 60);
+        Evoker.addProperty("ChaosCooldown", 20);
 
-        Ravager.addProperty("Trigger","!mc-ravager");
-        Ravager.addProperty("CommandID","ravager|DO NOT EDIT");
-        Ravager.addProperty("NormalCooldown",60);
-        Ravager.addProperty("ChaosCooldown",20);
+        Ravager.addProperty("Trigger", "!mc-ravager");
+        Ravager.addProperty("CommandID", "ravager|DO NOT EDIT");
+        Ravager.addProperty("NormalCooldown", 60);
+        Ravager.addProperty("ChaosCooldown", 20);
 
-        Slime.addProperty("Trigger","!mc-slime");
-        Slime.addProperty("CommandID","slime|DO NOT EDIT");
-        Slime.addProperty("NormalCooldown",60);
-        Slime.addProperty("ChaosCooldown",20);
+        Slime.addProperty("Trigger", "!mc-slime");
+        Slime.addProperty("CommandID", "slime|DO NOT EDIT");
+        Slime.addProperty("NormalCooldown", 60);
+        Slime.addProperty("ChaosCooldown", 20);
 
-        Vex.addProperty("Trigger","!mc-vex");
-        Vex.addProperty("CommandID","vex|DO NOT EDIT");
-        Vex.addProperty("NormalCooldown",60);
-        Vex.addProperty("ChaosCooldown",20);
+        Vex.addProperty("Trigger", "!mc-vex");
+        Vex.addProperty("CommandID", "vex|DO NOT EDIT");
+        Vex.addProperty("NormalCooldown", 60);
+        Vex.addProperty("ChaosCooldown", 20);
 
-        WitherSkeleton.addProperty("Trigger","!mc-witherskeleton");
-        WitherSkeleton.addProperty("CommandID","witherskeleton|DO NOT EDIT");
-        WitherSkeleton.addProperty("NormalCooldown",60);
-        WitherSkeleton.addProperty("ChaosCooldown",20);
+        WitherSkeleton.addProperty("Trigger", "!mc-witherskeleton");
+        WitherSkeleton.addProperty("CommandID", "witherskeleton|DO NOT EDIT");
+        WitherSkeleton.addProperty("NormalCooldown", 60);
+        WitherSkeleton.addProperty("ChaosCooldown", 20);
 
         //  Effect Commands
         JsonObject PoisonCommand = new JsonObject();
@@ -201,60 +194,60 @@ public class ConfigurationManager
         JsonObject ResistanceCommand = new JsonObject();
         JsonObject NightVisionCommand = new JsonObject();
 
-        PoisonCommand.addProperty("Trigger","!mc-poison");
-        PoisonCommand.addProperty("CommandID","poison|DO NOT EDIT");
-        PoisonCommand.addProperty("NormalCooldown",120);
-        PoisonCommand.addProperty("ChaosCooldown",30);
+        PoisonCommand.addProperty("Trigger", "!mc-poison");
+        PoisonCommand.addProperty("CommandID", "poison|DO NOT EDIT");
+        PoisonCommand.addProperty("NormalCooldown", 120);
+        PoisonCommand.addProperty("ChaosCooldown", 30);
 
-        HungerCommand.addProperty("Trigger","!mc-hunger");
-        HungerCommand.addProperty("CommandID","hunger|DO NOT EDIT");
-        HungerCommand.addProperty("NormalCooldown",120);
-        HungerCommand.addProperty("ChaosCooldown",30);
+        HungerCommand.addProperty("Trigger", "!mc-hunger");
+        HungerCommand.addProperty("CommandID", "hunger|DO NOT EDIT");
+        HungerCommand.addProperty("NormalCooldown", 120);
+        HungerCommand.addProperty("ChaosCooldown", 30);
 
-        WeaknessCommand.addProperty("Trigger","!mc-weakness");
-        WeaknessCommand.addProperty("CommandID","weakness|DO NOT EDIT");
-        WeaknessCommand.addProperty("NormalCooldown",120);
-        WeaknessCommand.addProperty("ChaosCooldown",30);
+        WeaknessCommand.addProperty("Trigger", "!mc-weakness");
+        WeaknessCommand.addProperty("CommandID", "weakness|DO NOT EDIT");
+        WeaknessCommand.addProperty("NormalCooldown", 120);
+        WeaknessCommand.addProperty("ChaosCooldown", 30);
 
-        BlindnessCommand.addProperty("Trigger","!mc-blind");
-        BlindnessCommand.addProperty("CommandID","blind|DO NOT EDIT");
-        BlindnessCommand.addProperty("NormalCooldown",120);
-        BlindnessCommand.addProperty("ChaosCooldown",30);
+        BlindnessCommand.addProperty("Trigger", "!mc-blind");
+        BlindnessCommand.addProperty("CommandID", "blind|DO NOT EDIT");
+        BlindnessCommand.addProperty("NormalCooldown", 120);
+        BlindnessCommand.addProperty("ChaosCooldown", 30);
 
-        SlowCommand.addProperty("Trigger","!mc-slow");
-        SlowCommand.addProperty("CommandID","slow|DO NOT EDIT");
-        SlowCommand.addProperty("NormalCooldown",120);
-        SlowCommand.addProperty("ChaosCooldown",30);
+        SlowCommand.addProperty("Trigger", "!mc-slow");
+        SlowCommand.addProperty("CommandID", "slow|DO NOT EDIT");
+        SlowCommand.addProperty("NormalCooldown", 120);
+        SlowCommand.addProperty("ChaosCooldown", 30);
 
-        RegenCommand.addProperty("Trigger","!mc-regen");
-        RegenCommand.addProperty("CommandID","regen|DO NOT EDIT");
-        RegenCommand.addProperty("NormalCooldown",120);
-        RegenCommand.addProperty("ChaosCooldown",30);
+        RegenCommand.addProperty("Trigger", "!mc-regen");
+        RegenCommand.addProperty("CommandID", "regen|DO NOT EDIT");
+        RegenCommand.addProperty("NormalCooldown", 120);
+        RegenCommand.addProperty("ChaosCooldown", 30);
 
-        StrengthCommand.addProperty("Trigger","!mc-strength");
-        StrengthCommand.addProperty("CommandID","strength|DO NOT EDIT");
-        StrengthCommand.addProperty("NormalCooldown",120);
-        StrengthCommand.addProperty("ChaosCooldown",30);
+        StrengthCommand.addProperty("Trigger", "!mc-strength");
+        StrengthCommand.addProperty("CommandID", "strength|DO NOT EDIT");
+        StrengthCommand.addProperty("NormalCooldown", 120);
+        StrengthCommand.addProperty("ChaosCooldown", 30);
 
-        SpeedCommand.addProperty("Trigger","!mc-speed");
-        SpeedCommand.addProperty("CommandID","speed|DO NOT EDIT");
-        SpeedCommand.addProperty("NormalCooldown",120);
-        SpeedCommand.addProperty("ChaosCooldown",30);
+        SpeedCommand.addProperty("Trigger", "!mc-speed");
+        SpeedCommand.addProperty("CommandID", "speed|DO NOT EDIT");
+        SpeedCommand.addProperty("NormalCooldown", 120);
+        SpeedCommand.addProperty("ChaosCooldown", 30);
 
-        HasteCommand.addProperty("Trigger","!mc-haste");
-        HasteCommand.addProperty("CommandID","haste|DO NOT EDIT");
-        HasteCommand.addProperty("NormalCooldown",120);
-        HasteCommand.addProperty("ChaosCooldown",30);
+        HasteCommand.addProperty("Trigger", "!mc-haste");
+        HasteCommand.addProperty("CommandID", "haste|DO NOT EDIT");
+        HasteCommand.addProperty("NormalCooldown", 120);
+        HasteCommand.addProperty("ChaosCooldown", 30);
 
-        ResistanceCommand.addProperty("Trigger","!mc-resistance");
-        ResistanceCommand.addProperty("CommandID","resistance|DO NOT EDIT");
-        ResistanceCommand.addProperty("NormalCooldown",120);
-        ResistanceCommand.addProperty("ChaosCooldown",30);
+        ResistanceCommand.addProperty("Trigger", "!mc-resistance");
+        ResistanceCommand.addProperty("CommandID", "resistance|DO NOT EDIT");
+        ResistanceCommand.addProperty("NormalCooldown", 120);
+        ResistanceCommand.addProperty("ChaosCooldown", 30);
 
-        NightVisionCommand.addProperty("Trigger","!mc-nightvision");
-        NightVisionCommand.addProperty("CommandID","nightvision|DO NOT EDIT");
-        NightVisionCommand.addProperty("NormalCooldown",120);
-        NightVisionCommand.addProperty("ChaosCooldown",30);
+        NightVisionCommand.addProperty("Trigger", "!mc-nightvision");
+        NightVisionCommand.addProperty("CommandID", "nightvision|DO NOT EDIT");
+        NightVisionCommand.addProperty("NormalCooldown", 120);
+        NightVisionCommand.addProperty("ChaosCooldown", 30);
 
         //  World Effect Commands
         JsonObject Night = new JsonObject();
@@ -263,30 +256,30 @@ public class ConfigurationManager
         JsonObject Rain = new JsonObject();
         JsonObject Clear = new JsonObject();
 
-        Night.addProperty("Trigger","!mc-night");
-        Night.addProperty("CommandID","night|DO NOT EDIT");
-        Night.addProperty("NormalCooldown",100);
-        Night.addProperty("ChaosCooldown",25);
+        Night.addProperty("Trigger", "!mc-night");
+        Night.addProperty("CommandID", "night|DO NOT EDIT");
+        Night.addProperty("NormalCooldown", 100);
+        Night.addProperty("ChaosCooldown", 25);
 
-        Day.addProperty("Trigger","!mc-day");
-        Day.addProperty("CommandID","day|DO NOT EDIT");
-        Day.addProperty("NormalCooldown",100);
-        Day.addProperty("ChaosCooldown",25);
+        Day.addProperty("Trigger", "!mc-day");
+        Day.addProperty("CommandID", "day|DO NOT EDIT");
+        Day.addProperty("NormalCooldown", 100);
+        Day.addProperty("ChaosCooldown", 25);
 
-        Thunder.addProperty("Trigger","!mc-thunder");
-        Thunder.addProperty("CommandID","thunder|DO NOT EDIT");
-        Thunder.addProperty("NormalCooldown",100);
-        Thunder.addProperty("ChaosCooldown",25);
+        Thunder.addProperty("Trigger", "!mc-thunder");
+        Thunder.addProperty("CommandID", "thunder|DO NOT EDIT");
+        Thunder.addProperty("NormalCooldown", 100);
+        Thunder.addProperty("ChaosCooldown", 25);
 
-        Rain.addProperty("Trigger","!mc-rain");
-        Rain.addProperty("CommandID","rain|DO NOT EDIT");
-        Rain.addProperty("NormalCooldown",100);
-        Rain.addProperty("ChaosCooldown",25);
+        Rain.addProperty("Trigger", "!mc-rain");
+        Rain.addProperty("CommandID", "rain|DO NOT EDIT");
+        Rain.addProperty("NormalCooldown", 100);
+        Rain.addProperty("ChaosCooldown", 25);
 
-        Clear.addProperty("Trigger","!mc-clear");
-        Clear.addProperty("CommandID","clear|DO NOT EDIT");
-        Clear.addProperty("NormalCooldown",100);
-        Clear.addProperty("ChaosCooldown",25);
+        Clear.addProperty("Trigger", "!mc-clear");
+        Clear.addProperty("CommandID", "clear|DO NOT EDIT");
+        Clear.addProperty("NormalCooldown", 100);
+        Clear.addProperty("ChaosCooldown", 25);
 
         //  Util Commands
         JsonObject HealthD = new JsonObject();
@@ -312,134 +305,133 @@ public class ConfigurationManager
         JsonObject Food = new JsonObject();
         JsonObject Doors = new JsonObject();
         JsonObject NoDoors = new JsonObject();
-        JsonObject Jump = new JsonObject();
         JsonObject Crouch = new JsonObject();
 
 
-        HealthD.addProperty("Trigger","!mc-healthd");
-        HealthD.addProperty("CommandID","healthd|DO NOT EDIT");
-        HealthD.addProperty("NormalCooldown",180);
-        HealthD.addProperty("ChaosCooldown",40);
+        HealthD.addProperty("Trigger", "!mc-healthd");
+        HealthD.addProperty("CommandID", "healthd|DO NOT EDIT");
+        HealthD.addProperty("NormalCooldown", 180);
+        HealthD.addProperty("ChaosCooldown", 40);
 
-        HealthP.addProperty("Trigger","!mc-healthp");
-        HealthP.addProperty("CommandID","healthp|DO NOT EDIT");
-        HealthP.addProperty("NormalCooldown",180);
-        HealthP.addProperty("ChaosCooldown",40);
+        HealthP.addProperty("Trigger", "!mc-healthp");
+        HealthP.addProperty("CommandID", "healthp|DO NOT EDIT");
+        HealthP.addProperty("NormalCooldown", 180);
+        HealthP.addProperty("ChaosCooldown", 40);
 
-        Speed25.addProperty("Trigger","!mc-speed25");
-        Speed25.addProperty("CommandID","speed25|DO NOT EDIT");
-        Speed25.addProperty("NormalCooldown",180);
-        Speed25.addProperty("ChaosCooldown",40);
+        Speed25.addProperty("Trigger", "!mc-speed25");
+        Speed25.addProperty("CommandID", "speed25|DO NOT EDIT");
+        Speed25.addProperty("NormalCooldown", 180);
+        Speed25.addProperty("ChaosCooldown", 40);
 
-        Speed50.addProperty("Trigger","!mc-speed50");
-        Speed50.addProperty("CommandID","speed50|DO NOT EDIT");
-        Speed50.addProperty("NormalCooldown",180);
-        Speed50.addProperty("ChaosCooldown",40);
+        Speed50.addProperty("Trigger", "!mc-speed50");
+        Speed50.addProperty("CommandID", "speed50|DO NOT EDIT");
+        Speed50.addProperty("NormalCooldown", 180);
+        Speed50.addProperty("ChaosCooldown", 40);
 
-        Speed100.addProperty("Trigger","!mc-speed100");
-        Speed100.addProperty("CommandID","speed100|DO NOT EDIT");
-        Speed100.addProperty("NormalCooldown",180);
-        Speed100.addProperty("ChaosCooldown",40);
+        Speed100.addProperty("Trigger", "!mc-speed100");
+        Speed100.addProperty("CommandID", "speed100|DO NOT EDIT");
+        Speed100.addProperty("NormalCooldown", 180);
+        Speed100.addProperty("ChaosCooldown", 40);
 
-        Speed150.addProperty("Trigger","!mc-speed150");
-        Speed150.addProperty("CommandID","speed150|DO NOT EDIT");
-        Speed150.addProperty("NormalCooldown",180);
-        Speed150.addProperty("ChaosCooldown",40);
+        Speed150.addProperty("Trigger", "!mc-speed150");
+        Speed150.addProperty("CommandID", "speed150|DO NOT EDIT");
+        Speed150.addProperty("NormalCooldown", 180);
+        Speed150.addProperty("ChaosCooldown", 40);
 
-        Speed200.addProperty("Trigger","!mc-speed200");
-        Speed200.addProperty("CommandID","speed200|DO NOT EDIT");
-        Speed200.addProperty("NormalCooldown",180);
-        Speed200.addProperty("ChaosCooldown",40);
+        Speed200.addProperty("Trigger", "!mc-speed200");
+        Speed200.addProperty("CommandID", "speed200|DO NOT EDIT");
+        Speed200.addProperty("NormalCooldown", 180);
+        Speed200.addProperty("ChaosCooldown", 40);
 
-        Hungry.addProperty("Trigger","!mc-hungry");
-        Hungry.addProperty("CommandID","hungry|DO NOT EDIT");
-        Hungry.addProperty("NormalCooldown",180);
-        Hungry.addProperty("ChaosCooldown",40);
+        Hungry.addProperty("Trigger", "!mc-hungry");
+        Hungry.addProperty("CommandID", "hungry|DO NOT EDIT");
+        Hungry.addProperty("NormalCooldown", 180);
+        Hungry.addProperty("ChaosCooldown", 40);
 
-        Axed.addProperty("Trigger","!mc-axe");
-        Axed.addProperty("CommandID","axe|DO NOT EDIT");
-        Axed.addProperty("NormalCooldown",180);
-        Axed.addProperty("ChaosCooldown",40);
+        Axed.addProperty("Trigger", "!mc-axe");
+        Axed.addProperty("CommandID", "axe|DO NOT EDIT");
+        Axed.addProperty("NormalCooldown", 180);
+        Axed.addProperty("ChaosCooldown", 40);
 
-        Shoveled.addProperty("Trigger","!mc-shovel");
-        Shoveled.addProperty("CommandID","shovel|DO NOT EDIT");
-        Shoveled.addProperty("NormalCooldown",180);
-        Shoveled.addProperty("ChaosCooldown",40);
+        Shoveled.addProperty("Trigger", "!mc-shovel");
+        Shoveled.addProperty("CommandID", "shovel|DO NOT EDIT");
+        Shoveled.addProperty("NormalCooldown", 180);
+        Shoveled.addProperty("ChaosCooldown", 40);
 
-        Pickaxed.addProperty("Trigger","!mc-pickaxe");
-        Pickaxed.addProperty("CommandID","pickaxe|DO NOT EDIT");
-        Pickaxed.addProperty("NormalCooldown",180);
-        Pickaxed.addProperty("ChaosCooldown",40);
+        Pickaxed.addProperty("Trigger", "!mc-pickaxe");
+        Pickaxed.addProperty("CommandID", "pickaxe|DO NOT EDIT");
+        Pickaxed.addProperty("NormalCooldown", 180);
+        Pickaxed.addProperty("ChaosCooldown", 40);
 
-        Sworded.addProperty("Trigger","!mc-sword");
-        Sworded.addProperty("CommandID","sword|DO NOT EDIT");
-        Sworded.addProperty("NormalCooldown",180);
-        Sworded.addProperty("ChaosCooldown",40);
+        Sworded.addProperty("Trigger", "!mc-sword");
+        Sworded.addProperty("CommandID", "sword|DO NOT EDIT");
+        Sworded.addProperty("NormalCooldown", 180);
+        Sworded.addProperty("ChaosCooldown", 40);
 
-        Hoed.addProperty("Trigger","!mc-hoe");
-        Hoed.addProperty("CommandID","hoe|DO NOT EDIT");
-        Hoed.addProperty("NormalCooldown",180);
-        Hoed.addProperty("ChaosCooldown",40);
+        Hoed.addProperty("Trigger", "!mc-hoe");
+        Hoed.addProperty("CommandID", "hoe|DO NOT EDIT");
+        Hoed.addProperty("NormalCooldown", 180);
+        Hoed.addProperty("ChaosCooldown", 40);
 
-        Death.addProperty("Trigger","!mc-death");
-        Death.addProperty("CommandID","death|DO NOT EDIT");
-        Death.addProperty("NormalCooldown",300);
-        Death.addProperty("ChaosCooldown",150);
+        Death.addProperty("Trigger", "!mc-death");
+        Death.addProperty("CommandID", "death|DO NOT EDIT");
+        Death.addProperty("NormalCooldown", 300);
+        Death.addProperty("ChaosCooldown", 150);
 
-        Sleepful.addProperty("Trigger","!mc-sleepful");
-        Sleepful.addProperty("CommandID","sleepful|DO NOT EDIT");
-        Sleepful.addProperty("NormalCooldown",180);
-        Sleepful.addProperty("ChaosCooldown",40);
+        Sleepful.addProperty("Trigger", "!mc-sleepful");
+        Sleepful.addProperty("CommandID", "sleepful|DO NOT EDIT");
+        Sleepful.addProperty("NormalCooldown", 180);
+        Sleepful.addProperty("ChaosCooldown", 40);
 
-        Sleepless.addProperty("Trigger","!mc-sleepless");
-        Sleepless.addProperty("CommandID","sleepless|DO NOT EDIT");
-        Sleepless.addProperty("NormalCooldown",180);
-        Sleepless.addProperty("ChaosCooldown",40);
+        Sleepless.addProperty("Trigger", "!mc-sleepless");
+        Sleepless.addProperty("CommandID", "sleepless|DO NOT EDIT");
+        Sleepless.addProperty("NormalCooldown", 180);
+        Sleepless.addProperty("ChaosCooldown", 40);
 
-        Chests.addProperty("Trigger","!mc-chests");
-        Chests.addProperty("CommandID","chests|DO NOT EDIT");
-        Chests.addProperty("NormalCooldown",180);
-        Chests.addProperty("ChaosCooldown",40);
+        Chests.addProperty("Trigger", "!mc-chests");
+        Chests.addProperty("CommandID", "chests|DO NOT EDIT");
+        Chests.addProperty("NormalCooldown", 180);
+        Chests.addProperty("ChaosCooldown", 40);
 
-        NoChests.addProperty("Trigger","!mc-nochests");
-        NoChests.addProperty("CommandID","nochests|DO NOT EDIT");
-        NoChests.addProperty("NormalCooldown",180);
-        NoChests.addProperty("ChaosCooldown",40);
+        NoChests.addProperty("Trigger", "!mc-nochests");
+        NoChests.addProperty("CommandID", "nochests|DO NOT EDIT");
+        NoChests.addProperty("NormalCooldown", 180);
+        NoChests.addProperty("ChaosCooldown", 40);
 
-        Steal.addProperty("Trigger","!mc-steal");
-        Steal.addProperty("CommandID","steal|DO NOT EDIT");
-        Steal.addProperty("NormalCooldown",180);
-        Steal.addProperty("ChaosCooldown",40);
+        Steal.addProperty("Trigger", "!mc-steal");
+        Steal.addProperty("CommandID", "steal|DO NOT EDIT");
+        Steal.addProperty("NormalCooldown", 180);
+        Steal.addProperty("ChaosCooldown", 40);
 
-        Snatch.addProperty("Trigger","!mc-snatch");
-        Snatch.addProperty("CommandID","snatch|DO NOT EDIT");
-        Snatch.addProperty("NormalCooldown",180);
-        Snatch.addProperty("ChaosCooldown",40);
+        Snatch.addProperty("Trigger", "!mc-snatch");
+        Snatch.addProperty("CommandID", "snatch|DO NOT EDIT");
+        Snatch.addProperty("NormalCooldown", 180);
+        Snatch.addProperty("ChaosCooldown", 40);
 
-        Food.addProperty("Trigger","!mc-food");
-        Food.addProperty("CommandID","food|DO NOT EDIT");
-        Food.addProperty("NormalCooldown",180);
-        Food.addProperty("ChaosCooldown",40);
+        Food.addProperty("Trigger", "!mc-food");
+        Food.addProperty("CommandID", "food|DO NOT EDIT");
+        Food.addProperty("NormalCooldown", 180);
+        Food.addProperty("ChaosCooldown", 40);
 
-        Doors.addProperty("Trigger","!mc-doors");
-        Doors.addProperty("CommandID","door|DO NOT EDIT");
-        Doors.addProperty("NormalCooldown",180);
-        Doors.addProperty("ChaosCooldown",40);
+        Doors.addProperty("Trigger", "!mc-doors");
+        Doors.addProperty("CommandID", "door|DO NOT EDIT");
+        Doors.addProperty("NormalCooldown", 180);
+        Doors.addProperty("ChaosCooldown", 40);
 
-        NoDoors.addProperty("Trigger","!mc-nodoors");
-        NoDoors.addProperty("CommandID","nodoor|DO NOT EDIT");
-        NoDoors.addProperty("NormalCooldown",180);
-        NoDoors.addProperty("ChaosCooldown",40);
+        NoDoors.addProperty("Trigger", "!mc-nodoors");
+        NoDoors.addProperty("CommandID", "nodoor|DO NOT EDIT");
+        NoDoors.addProperty("NormalCooldown", 180);
+        NoDoors.addProperty("ChaosCooldown", 40);
 
-        Jump.addProperty("Trigger","!mc-jump");
-        Jump.addProperty("CommandID","jump|DO NOT EDIT");
-        Jump.addProperty("NormalCooldown",300);
-        Jump.addProperty("ChaosCooldown",150);
+        Crouch.addProperty("Trigger", "!mc-crouch");
+        Crouch.addProperty("CommandID", "crouch|DO NOT EDIT");
+        Crouch.addProperty("NormalCooldown", 300);
+        Crouch.addProperty("ChaosCooldown", 150);
 
-        Crouch.addProperty("Trigger","!mc-crouch");
-        Crouch.addProperty("CommandID","crouch|DO NOT EDIT");
-        Crouch.addProperty("NormalCooldown",300);
-        Crouch.addProperty("ChaosCooldown",150);
+        Crouch.addProperty("Trigger", "!mc-scare");
+        Crouch.addProperty("CommandID", "scare|DO NOT EDIT");
+        Crouch.addProperty("NormalCooldown", 180);
+        Crouch.addProperty("ChaosCooldown", 40);
 
         CommandsList.add(CreeperCommand);
         CommandsList.add(SkeletonCommand);
@@ -504,12 +496,11 @@ public class ConfigurationManager
         CommandsList.add(Sworded);
         CommandsList.add(Doors);
         CommandsList.add(NoDoors);
-        CommandsList.add(Jump);
         CommandsList.add(Crouch);
 
-        Object.add("Commands",CommandsList);
+        Object.add("Commands", CommandsList);
         JsonWriter WriterJ = new JsonWriter(new FileWriter(Location));
-        G.toJson(Object,WriterJ);
+        G.toJson(Object, WriterJ);
         WriterJ.flush();
         WriterJ.close();
     }

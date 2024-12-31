@@ -6,19 +6,14 @@ import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import org.multicoder.nlti.data.GlobalVars;
-import org.multicoder.nlti.events.PlayerCloneEvent;
-import org.multicoder.nlti.events.PlayerJoinedEvent;
-import org.multicoder.nlti.events.ServerStartedEvent;
-import org.multicoder.nlti.events.ServerStoppedEvent;
+import org.multicoder.nlti.events.*;
 import org.multicoder.nlti.gamecommands.NLTICommands;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.slf4j.*;
 
 public class NLTI implements ModInitializer
 {
     public static final String Version = "4.1.0";
     public static final Logger LOGGER = LoggerFactory.getLogger(NLTI.class);
-    public static final boolean DEBUG = false;
     public static boolean FIRSTRUN = false;
     public static GlobalVars Vars;
     @Override

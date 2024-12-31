@@ -28,28 +28,21 @@ public class MulticoderTwitchConnection
         String CommandConfig = server.getRunDirectory().getAbsolutePath() + "/nlti-commands.json";
         String MainConfig = server.getRunDirectory().getAbsolutePath() + "/nlti-config.json";
         ConfigurationManager.LoadOrCreateConfig(MainConfig,CommandConfig);
-        if(NLTI.DEBUG)
+        Enabled = false;
+        SERVER = server;
+        if(!NLTI.FIRSTRUN)
         {
-            SERVER = server;
-        }
-        else
-        {
-            Enabled = false;
-            SERVER = server;
-            if(!NLTI.FIRSTRUN)
+            CredentialManager Manager = CredentialManagerBuilder.builder().build();
+            TwitchAuth.registerIdentityProvider(Manager,Config.getClientID(this.getClass()),Config.getToken(this.getClass()),Config.getRedirect(this.getClass()));
+            CLIENT = TwitchClientBuilder.builder().withFeignLogLevel(Logger.Level.NONE).withCredentialManager(Manager).withEnableHelix(true).withEnableChat(true).withChatAccount(new OAuth2Credential("twitch", Config.getToken(this.getClass()))).build();
+            CHAT = CLIENT.getChat();
+            HELIX = CLIENT.getHelix();
+            CHAT.connect();
+            for(String User : Config.Users)
             {
-                CredentialManager Manager = CredentialManagerBuilder.builder().build();
-                TwitchAuth.registerIdentityProvider(Manager,Config.getClientID(this.getClass()),Config.getToken(this.getClass()),Config.getRedirect(this.getClass()));
-                CLIENT = TwitchClientBuilder.builder().withFeignLogLevel(Logger.Level.NONE).withCredentialManager(Manager).withEnableHelix(true).withEnableChat(true).withChatAccount(new OAuth2Credential("twitch", Config.getToken(this.getClass()))).build();
-                CHAT = CLIENT.getChat();
-                HELIX = CLIENT.getHelix();
-                CHAT.connect();
-                for(String User : Config.Users)
-                {
-                    CHAT.joinChannel(User);
-                    CHAT.getEventManager().onEvent(ChannelMessageEvent.class,MessageListener::Handle);
-                    CHAT.sendMessage(User,"NLTI Has Connected");
-                }
+                CHAT.joinChannel(User);
+                CHAT.getEventManager().onEvent(ChannelMessageEvent.class,MessageListener::Handle);
+                CHAT.sendMessage(User,"NLTI Has Connected");
             }
         }
     }

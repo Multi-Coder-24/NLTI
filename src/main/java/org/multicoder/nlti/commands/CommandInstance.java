@@ -1,11 +1,10 @@
 package org.multicoder.nlti.commands;
 
-import org.multicoder.nlti.NLTI;
 import org.multicoder.nlti.commands.mob.*;
 import org.multicoder.nlti.commands.player.*;
 import org.multicoder.nlti.commands.potion.*;
 import org.multicoder.nlti.commands.world.*;
-import org.multicoder.nlti.twitch.MulticoderTwitchConnection;
+
 import java.time.LocalDateTime;
 
 public class CommandInstance
@@ -21,72 +20,80 @@ public class CommandInstance
         Trigger = trigger;
         Normal = cooldowns[0];
         Chaos = cooldowns[1];
-        Cooldown = LocalDateTime.now();
+        Cooldown = LocalDateTime.now().minusSeconds(1);
         CommandID = ID;
     }
 
     public void Trigger(String Username,String Channel)
     {
-        NLTI.LOGGER.info("CommandID: " + CommandID);
         switch (CommandID)
         {
-            case "creeper" -> Creeper.Trigger(Username, Channel);
-            case "enderman" -> Enderman.Trigger(Username, Channel);
-            case "husk" -> Husk.Trigger(Username, Channel);
-            case "piglin" -> Piglin.Trigger(Username, Channel);
-            case "pillager" -> Pillager.Trigger(Username, Channel);
-            case "skeleton" -> Skeleton.Trigger(Username, Channel);
-            case "spider" -> Spider.Trigger(Username, Channel);
-            case "stray" -> Stray.Trigger(Username, Channel);
-            case "vindicator" -> Vindicator.Trigger(Username, Channel);
-            case "witch" -> Witch.Trigger(Username, Channel);
-            case "cow" -> Cow.Trigger(Username, Channel);
-            case "chicken" -> Chicken.Trigger(Username, Channel);
-            case "pig" -> Pig.Trigger(Username, Channel);
-            case "sheep" -> Sheep.Trigger(Username, Channel);
-            case "blaze" -> Blaze.Trigger(Username, Channel);
-            case "evoker" -> Evoker.Trigger(Username, Channel);
-            case "ravager" -> Ravager.Trigger(Username, Channel);
-            case "slime" -> Slime.Trigger(Username, Channel);
-            case "vex" -> Vex.Trigger(Username, Channel);
-            case "witherskeleton" -> WitherSkeleton.Trigger(Username, Channel);
-            case "axe" -> Axed.Trigger(Username, Channel);
-            case "chests" -> Chests.Trigger(Username, Channel);
-            case "death" -> Death.Trigger(Username, Channel);
-            case "food" -> Food.Trigger(Username, Channel);
-            case "healthd" -> HealthD.Trigger(Username, Channel);
-            case "healthp" -> HealthP.Trigger(Username, Channel);
-            case "hoe" -> Hoed.Trigger(Username, Channel);
-            case "hungry" -> Hungry.Trigger(Username, Channel);
-            case "nochests" -> NoChests.Trigger(Username, Channel);
-            case "pickaxe" -> Pickaxed.Trigger(Username, Channel);
-            case "shovel" -> Shoveled.Trigger(Username, Channel);
-            case "sleepful" -> Sleepful.Trigger(Username, Channel);
-            case "sleepless" -> Sleepless.Trigger(Username, Channel);
-            case "snatch" -> Snatch.Trigger(Username, Channel);
-            case "speed25" -> Speed25.Trigger(Username, Channel);
-            case "speed50" -> Speed50.Trigger(Username, Channel);
-            case "speed100" -> Speed100.Trigger(Username, Channel);
-            case "speed150" -> Speed150.Trigger(Username, Channel);
-            case "speed200" -> Speed200.Trigger(Username, Channel);
-            case "steal" -> Steal.Trigger(Username, Channel);
-            case "blind" -> Blind.Trigger(Username, Channel);
-            case "haste" -> Haste.Trigger(Username, Channel);
-            case "hunger" -> Hunger.Trigger(Username, Channel);
-            case "nightvision" ->NightVision.Trigger(Username, Channel);
-            case "poison" -> Poison.Trigger(Username, Channel);
-            case "regen" -> Regen.Trigger(Username, Channel);
-            case "speed" -> Speed.Trigger(Username, Channel);
-            case "strength" -> Strength.Trigger(Username, Channel);
-            case "day" -> DayTime.Trigger(Username, Channel);
-            case "night" -> NightTime.Trigger(Username, Channel);
-            case "rain" -> Rain.Trigger(Username, Channel);
-            case "thunder" -> Thunder.Trigger(Username, Channel);
-            case "clear" -> Clear.Trigger(Username, Channel);
-            case "door" -> Door.Trigger(Username, Channel);
-            case "nodoor" -> NoDoor.Trigger(Username, Channel);
-            case "jump" -> Jump.Trigger(Username,Channel);
-            case "crouch" -> Crouch.Trigger(Username,Channel);
+            case "creeper" -> Creeper.Trigger(Username, Channel,this);
+            case "enderman" -> Enderman.Trigger(Username, Channel,this);
+            case "husk" -> Husk.Trigger(Username, Channel,this);
+            case "piglin" -> Piglin.Trigger(Username, Channel,this);
+            case "pillager" -> Pillager.Trigger(Username, Channel,this);
+            case "skeleton" -> Skeleton.Trigger(Username, Channel,this);
+            case "spider" -> Spider.Trigger(Username, Channel,this);
+            case "stray" -> Stray.Trigger(Username, Channel,this);
+            case "vindicator" -> Vindicator.Trigger(Username, Channel,this);
+            case "witch" -> Witch.Trigger(Username, Channel,this);
+            case "cow" -> Cow.Trigger(Username, Channel,this);
+            case "chicken" -> Chicken.Trigger(Username, Channel,this);
+            case "pig" -> Pig.Trigger(Username, Channel,this);
+            case "sheep" -> Sheep.Trigger(Username, Channel,this);
+            case "blaze" -> Blaze.Trigger(Username, Channel,this);
+            case "evoker" -> Evoker.Trigger(Username, Channel,this);
+            case "ravager" -> Ravager.Trigger(Username, Channel,this);
+            case "slime" -> Slime.Trigger(Username, Channel,this);
+            case "vex" -> Vex.Trigger(Username, Channel,this);
+            case "zombie" -> Zombie.Trigger(Username, Channel,this);
+            case "witherskeleton" -> WitherSkeleton.Trigger(Username, Channel,this);
+
+            case "axe" -> Axed.Trigger(Username, Channel,this);
+            case "sword" -> Sworded.Trigger(Username, Channel,this);
+            case "chests" -> Chests.Trigger(Username, Channel,this);
+            case "death" -> Death.Trigger(Username, Channel,this);
+            case "food" -> Food.Trigger(Username, Channel,this);
+            case "healthd" -> HealthD.Trigger(Username, Channel,this);
+            case "healthp" -> HealthP.Trigger(Username, Channel,this);
+            case "hoe" -> Hoed.Trigger(Username, Channel,this);
+            case "hungry" -> Hungry.Trigger(Username, Channel,this);
+            case "nochests" -> NoChests.Trigger(Username, Channel,this);
+            case "pickaxe" -> Pickaxed.Trigger(Username, Channel,this);
+            case "shovel" -> Shoveled.Trigger(Username, Channel,this);
+            case "sleepful" -> Sleepful.Trigger(Username, Channel,this);
+            case "sleepless" -> Sleepless.Trigger(Username, Channel,this);
+            case "snatch" -> Snatch.Trigger(Username, Channel,this);
+            case "speed25" -> Speed25.Trigger(Username, Channel,this);
+            case "speed50" -> Speed50.Trigger(Username, Channel,this);
+            case "speed100" -> Speed100.Trigger(Username, Channel,this);
+            case "speed150" -> Speed150.Trigger(Username, Channel,this);
+            case "speed200" -> Speed200.Trigger(Username, Channel,this);
+            case "steal" -> Steal.Trigger(Username, Channel,this);
+            case "scare" -> JumpScare.Trigger(Username, Channel,this);
+
+            case "blind" -> Blind.Trigger(Username, Channel,this);
+            case "haste" -> Haste.Trigger(Username, Channel,this);
+            case "hunger" -> Hunger.Trigger(Username, Channel,this);
+            case "nightvision" ->NightVision.Trigger(Username, Channel,this);
+            case "poison" -> Poison.Trigger(Username, Channel,this);
+            case "regen" -> Regen.Trigger(Username, Channel,this);
+            case "speed" -> Speed.Trigger(Username, Channel,this);
+            case "resistance" -> Resistance.Trigger(Username, Channel,this);
+            case "slow" -> Slow.Trigger(Username, Channel,this);
+            case "strength" -> Strength.Trigger(Username, Channel,this);
+            case "weakness" -> Weakness.Trigger(Username, Channel,this);
+
+            case "day" -> DayTime.Trigger(Username, Channel,this);
+            case "night" -> NightTime.Trigger(Username, Channel,this);
+            case "rain" -> Rain.Trigger(Username, Channel,this);
+            case "thunder" -> Thunder.Trigger(Username, Channel,this);
+            case "clear" -> Clear.Trigger(Username, Channel,this);
+
+            case "door" -> Door.Trigger(Username, Channel,this);
+            case "nodoor" -> NoDoor.Trigger(Username, Channel,this);
+            case "crouch" -> Crouch.Trigger(Username,Channel,this);
         }
     }
 }
