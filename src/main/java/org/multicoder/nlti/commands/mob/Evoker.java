@@ -8,6 +8,7 @@ import net.minecraft.util.Formatting;
 import net.minecraft.util.math.BlockPos;
 import org.multicoder.nlti.commands.CommandInstance;
 import org.multicoder.nlti.twitch.MulticoderTwitchConnection;
+import org.multicoder.nlti.util.PostCommandLogic;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -26,14 +27,7 @@ public class Evoker
                 C.setPosition(Position.toCenterPos());
                 player.getServerWorld().spawnEntity(C);
             });
-            MulticoderTwitchConnection.SERVER.getPlayerManager().broadcast(Text.of(Username + " Has ran the command: Evoker"),false);
-            if(Objects.equals(Username, "NLTI")){return;}
-            if(MulticoderTwitchConnection.Config.ChaosMode) {
-                instance.Cooldown = LocalDateTime.now().plusSeconds(instance.Chaos);
-            }
-            else {
-                instance.Cooldown = LocalDateTime.now().plusSeconds(instance.Normal);
-            }
+            PostCommandLogic.Post(instance,Username);
         }
         else {
             MulticoderTwitchConnection.CHAT.sendMessage(Channel,"@" + Username + " This command is still on cooldown");

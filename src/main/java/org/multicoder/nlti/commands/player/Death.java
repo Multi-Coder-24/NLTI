@@ -1,12 +1,11 @@
 package org.multicoder.nlti.commands.player;
 
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.text.Text;
 import org.multicoder.nlti.commands.CommandInstance;
 import org.multicoder.nlti.twitch.MulticoderTwitchConnection;
+import org.multicoder.nlti.util.PostCommandLogic;
 
 import java.time.LocalDateTime;
-import java.util.Objects;
 
 public class Death
 {
@@ -14,14 +13,7 @@ public class Death
     {
         if(LocalDateTime.now().isAfter(instance.Cooldown)) {
             MulticoderTwitchConnection.SERVER.getPlayerManager().getPlayerList().forEach(LivingEntity::kill);
-            MulticoderTwitchConnection.SERVER.getPlayerManager().broadcast(Text.of(Username + " Has ran the command: Death"),false);
-            if(Objects.equals(Username, "NLTI")){return;}
-            if(MulticoderTwitchConnection.Config.ChaosMode) {
-                instance.Cooldown = LocalDateTime.now().plusSeconds(instance.Chaos);
-            }
-            else {
-                instance.Cooldown = LocalDateTime.now().plusSeconds(instance.Normal);
-            }
+            PostCommandLogic.Post(instance,Username);
         }
         else {
             MulticoderTwitchConnection.CHAT.sendMessage(Channel,"@" + Username + " This command is still on cooldown");

@@ -306,6 +306,7 @@ public class ConfigurationManager {
         JsonObject Doors = new JsonObject();
         JsonObject NoDoors = new JsonObject();
         JsonObject Crouch = new JsonObject();
+        JsonObject Scare = new JsonObject();
 
 
         HealthD.addProperty("Trigger", "!mc-healthd");
@@ -428,10 +429,10 @@ public class ConfigurationManager {
         Crouch.addProperty("NormalCooldown", 300);
         Crouch.addProperty("ChaosCooldown", 150);
 
-        Crouch.addProperty("Trigger", "!mc-scare");
-        Crouch.addProperty("CommandID", "scare|DO NOT EDIT");
-        Crouch.addProperty("NormalCooldown", 180);
-        Crouch.addProperty("ChaosCooldown", 40);
+        Scare.addProperty("Trigger", "!mc-scare");
+        Scare.addProperty("CommandID", "scare|DO NOT EDIT");
+        Scare.addProperty("NormalCooldown", 180);
+        Scare.addProperty("ChaosCooldown", 40);
 
         CommandsList.add(CreeperCommand);
         CommandsList.add(SkeletonCommand);
@@ -497,6 +498,7 @@ public class ConfigurationManager {
         CommandsList.add(Doors);
         CommandsList.add(NoDoors);
         CommandsList.add(Crouch);
+        CommandsList.add(Scare);
 
         Object.add("Commands", CommandsList);
         JsonWriter WriterJ = new JsonWriter(new FileWriter(Location));
