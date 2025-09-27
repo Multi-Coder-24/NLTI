@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "nlti",
+  "version": "${version}",
+  "name": "Next Level Twitch Integration",
+  "description": "A customizable twitch integration mod that allows viewers to help or hinder the streamer",
+  "authors": [],
+  "contact": {},
+  "license": "LGPL-3.0",
+  "icon": "assets/nlti/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "org.multicoder.nlti.NLTI"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}

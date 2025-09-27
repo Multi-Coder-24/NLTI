@@ -1,0 +1,5 @@
+run/
+.idea/
+build/
+.gradle/
+src/main/java/org/multicoder/nlti/commands/TwitchLinker.java
