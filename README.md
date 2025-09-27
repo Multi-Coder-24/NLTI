@@ -1,1 +1,1 @@
-# To prevent issues withh twtch API the Linker class has been ommitted from github uploads
+# To prevent issues with twtch API the Linker class has been ommitted from github uploads
