@@ -7,16 +7,21 @@ import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.multicoder.nlti.NLTI;
+import org.multicoder.nlti.twitch.CommandBase;
 
 import java.time.LocalDateTime;
 
-public class Llama
-{
-    public static final int COOLDOWN = 0;
-    public static final String TRIGGER = "!MC-Llama";
-    public static LocalDateTime COOLDOWN_COUNTER = LocalDateTime.now().minusSeconds(300);
+public class Llama extends CommandBase {
 
-    public static boolean Trigger(MinecraftServer server,String Username){
+    public Llama(){
+        COOLDOWN = 0;
+        TRIGGER = "!MC-Llama";
+        COOLDOWN_COUNTER = LocalDateTime.now().minusSeconds(300);
+    }
+
+
+    @Override
+    public boolean Trigger(MinecraftServer server,String Username){
         try{
             if(LocalDateTime.now().isAfter(COOLDOWN_COUNTER)){
                 server.getPlayerManager().getPlayerList().forEach(player -> {

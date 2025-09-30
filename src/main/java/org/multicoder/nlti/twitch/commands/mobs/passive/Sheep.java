@@ -8,16 +8,21 @@ import net.minecraft.util.DyeColor;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.multicoder.nlti.NLTI;
+import org.multicoder.nlti.twitch.CommandBase;
 
 import java.time.LocalDateTime;
 
-public class Sheep
-{
-    public static final int COOLDOWN = 0;
-    public static final String TRIGGER = "!MC-Sheep";
-    public static LocalDateTime COOLDOWN_COUNTER = LocalDateTime.now().minusSeconds(300);
+public class Sheep extends CommandBase {
 
-    public static boolean Trigger(MinecraftServer server,String Username)
+    public Sheep(){
+        COOLDOWN = 0;
+        TRIGGER = "!MC-Sheep";
+        COOLDOWN_COUNTER = LocalDateTime.now().minusSeconds(300);
+    }
+
+
+    @Override
+    public boolean Trigger(MinecraftServer server,String Username)
     {
         try{
             if(LocalDateTime.now().isAfter(COOLDOWN_COUNTER)){

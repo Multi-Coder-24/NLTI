@@ -10,16 +10,20 @@ import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.multicoder.nlti.NLTI;
+import org.multicoder.nlti.twitch.CommandBase;
 
 import java.time.LocalDateTime;
 
-public class Skeleton
-{
-    public static final int COOLDOWN = 0;
-    public static final String TRIGGER = "!MC-Skeleton";
-    public static LocalDateTime COOLDOWN_COUNTER = LocalDateTime.now().minusSeconds(300);
+public class Skeleton extends CommandBase {
 
-    public static boolean Trigger(MinecraftServer server,String Username){
+    public Skeleton(){
+        COOLDOWN = 0;
+        TRIGGER = "!MC-Skeleton";
+        COOLDOWN_COUNTER = LocalDateTime.now().minusSeconds(300);
+    }
+
+    @Override
+    public boolean Trigger(MinecraftServer server,String Username){
         try{
             if(LocalDateTime.now().isAfter(COOLDOWN_COUNTER)){
                 server.getPlayerManager().getPlayerList().forEach(player -> {

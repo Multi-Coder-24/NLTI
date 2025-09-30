@@ -8,15 +8,21 @@ import org.multicoder.nlti.NLTI;
 import java.io.File;
 import java.io.FileInputStream;
 
+@SuppressWarnings("all")
 public class NLTIConfig
 {
     public static String Token;
     private static String SaveFile;
     public static void CreateOrLoadConfig(String ConfigDirectory) {
         try{
-            SaveFile = ConfigDirectory + "/nlti-config.toml";
+            File Dir = new File(ConfigDirectory);
+            if(!Dir.exists()){
+                var ignored = Dir.mkdir();
+            }
+            SaveFile = ConfigDirectory + "nlti-config.toml";
             File tomlFile = new File(SaveFile);
             if(!tomlFile.exists()) {
+                var ignored = tomlFile.createNewFile();
                 CommentedFileConfig CCFG = CommentedFileConfig.builder(tomlFile).build();
                 CCFG.add("token","***");
                 CCFG.setComment("token","Please enter your twitch token");
