@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "nlti",
+  "version": "${version}",
+  "name": "Next Level Twitch Integration",
+  "description": "A server side mod for streamers to use, Allows chat to cause chaos",
+  "authors": ["Multicoder"],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/nlti/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "org.multicoder.nlti.client.NltiClient"
+    ],
+    "main": [
+      "org.multicoder.nlti.Nlti"
+    ]
+  },
+  "mixins": [
+    "nlti.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
