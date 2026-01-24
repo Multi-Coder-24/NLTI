@@ -1,9 +1,8 @@
-package org.multicoder.nlti.twitch.commands;
+package org.multicoder.nlti.twitch.commands.hermits;
 
 import net.minecraft.block.Oxidizable;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.mob.RavagerEntity;
 import net.minecraft.entity.mob.SkeletonEntity;
 import net.minecraft.entity.passive.CopperGolemEntity;
 import net.minecraft.entity.passive.CopperGolemState;

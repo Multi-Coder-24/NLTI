@@ -9,5 +9,7 @@
   "text.nlti.scar_golem": "Little Green Army Man",
   "text.nlti.scar_skele": "Not Scar Safe",
 
+  "text.nlti.test_success": "Successfully Triggered Command",
+  "text.nlti.test_failed": "Unsuccessfully Triggered Command",
   "text.nlti.command": "%s Has Ran %s"
 }

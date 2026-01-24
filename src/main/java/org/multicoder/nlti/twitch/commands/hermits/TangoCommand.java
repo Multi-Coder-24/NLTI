@@ -1,17 +1,12 @@
-package org.multicoder.nlti.twitch.commands;
+package org.multicoder.nlti.twitch.commands.hermits;
 
 import net.minecraft.component.DataComponentTypes;
-import net.minecraft.component.type.WritableBookContentComponent;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.mob.RavagerEntity;
-import net.minecraft.entity.mob.ZombieEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.text.RawFilteredPair;
 import net.minecraft.text.Text;
-import org.multicoder.nlti.util.MumboLootPool;
-
 import java.time.LocalDateTime;
 
 public class TangoCommand {

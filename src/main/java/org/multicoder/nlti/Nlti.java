@@ -4,7 +4,6 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
-import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.minecraft.command.CommandRegistryAccess;
 import net.minecraft.server.command.*;
 import org.multicoder.nlti.server.GameCommands;
@@ -19,7 +18,7 @@ public class Nlti implements ModInitializer {
     }
 
     private void CommandRegister(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess commandRegistryAccess, CommandManager.RegistrationEnvironment registrationEnvironment) {
-        dispatcher.register(literal("NLTI").then(literal("Test").then(argument("name",StringArgumentType.string()).executes(GameCommands::TestCommand)))).createBuilder().build();
+        dispatcher.register(literal("NLTI").then(literal("Test").then(argument("name",StringArgumentType.greedyString()).executes(GameCommands::TestCommand)))).createBuilder().build();
     }
 
 }

@@ -1,4 +1,4 @@
-package org.multicoder.nlti.twitch.commands;
+package org.multicoder.nlti.twitch.commands.hermits;
 
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.mob.ZombieEntity;
