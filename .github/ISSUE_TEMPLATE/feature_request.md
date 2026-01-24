@@ -2,7 +2,7 @@
 name: Feature request
 about: Suggest an idea for this project
 title: "[RQ Feature] New *"
-labels: ''
+labels: Feature
 assignees: Multi-Coder-24
 
 ---
