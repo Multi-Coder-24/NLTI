@@ -5,6 +5,9 @@
 *.ipr
 *.iws
 
+# Secure Command Ommitted For Security
+src/main/java/org/multicoder/nlti/commands/SecureCommand.java
+
 # IntelliJ
 out/
 # mpeltonen/sbt-idea plugin

@@ -1,15 +1,7 @@
 {
-  "text.nlti.mumbo_zombie": "It's Quite Simple Really",
-  "text.nlti.mumbo_paper": "Mumbo4Mayor",
-  "text.nlti.tango_porkchops": "Pork Chop Power",
-  "text.nlti.tango_totem": "Party Popper",
-  "text.nlti.tango_ravager": "Decked Out 2",
-  "text.nlti.tango_book": "The NDA",
-  "text.nlti.scar_diamond": "Docm77's Diamond Ore",
-  "text.nlti.scar_golem": "Little Green Army Man",
-  "text.nlti.scar_skele": "Not Scar Safe",
-
-  "text.nlti.test_success": "Successfully Triggered Command",
-  "text.nlti.test_failed": "Unsuccessfully Triggered Command",
-  "text.nlti.command": "%s Has Ran %s"
+  "text.nlti.name": "NLTI",
+  "text.nlti.link": "Link",
+  "text.nlti.start": "Start",
+  "text.nlti.stop": "Stop",
+  "text.nlti.reset": "Reset"
 }

@@ -6,15 +6,15 @@
   "description": "A server side mod for streamers to use, Allows chat to cause chaos",
   "authors": ["Multicoder"],
   "contact": {},
-  "license": "All-Rights-Reserved",
+  "license": "LGPLv3",
   "icon": "assets/nlti/icon.png",
   "environment": "*",
   "entrypoints": {
     "client": [
-      "org.multicoder.nlti.client.NltiClient"
+      "org.multicoder.nlti.client.NLTIClient"
     ],
     "main": [
-      "org.multicoder.nlti.Nlti"
+      "org.multicoder.nlti.NLTI"
     ]
   },
   "mixins": [
