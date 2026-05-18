@@ -6,6 +6,7 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
+import org.multicoder.nlti.commands.secure.SecureCommand;
 
 import static net.minecraft.server.command.CommandManager.literal;
 

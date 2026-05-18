@@ -6,7 +6,7 @@
 *.iws
 
 # Secure Command Ommitted For Security
-src/main/java/org/multicoder/nlti/commands/SecureCommand.java
+src/main/java/org/multicoder/nlti/commands/secure/
 
 # IntelliJ
 out/
