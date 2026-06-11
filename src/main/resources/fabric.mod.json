@@ -3,7 +3,7 @@
   "id": "nlti",
   "version": "${version}",
   "name": "Next Level Twitch Integration",
-  "description": "A server side mod for streamers to use, Allows chat to cause chaos",
+  "description": "A mod for streamers to use, Allows chat to cause chaos",
   "authors": ["Multicoder"],
   "contact": {},
   "license": "LGPLv3",
@@ -23,6 +23,7 @@
   "depends": {
     "fabricloader": ">=${loader_version}",
     "fabric-api": "*",
-    "minecraft": "${minecraft_version}"
+    "minecraft": "${minecraft_version}",
+    "fabric-language-kotlin": ">=1.13.12+kotlin.2.4.0"
   }
 }
