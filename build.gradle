@@ -18,7 +18,9 @@ dependencies {
     mappings loom.officialMojangMappings()
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    include(modApi "com.github.twitch4j:twitch4j:1.25.0")
+    include(modApi "com.github.twitch4j:twitch4j:1.26.0")
+    include(modApi "com.electronwill.night-config:core:3.8.4")
+    include(modApi "com.electronwill.night-config:toml:3.8.4")
 }
 
 processResources {

@@ -1,7 +1,18 @@
 {
   "text.nlti.name": "NLTI",
   "text.nlti.link": "Link",
+  "text.nlti.unlink": "Unlink",
   "text.nlti.start": "Start",
   "text.nlti.stop": "Stop",
-  "text.nlti.reset": "Reset"
+  "text.nlti.reset": "Reset",
+  "text.nlti.link_url": "Connect Twitch: %s",
+  "text.nlti.linked": "Connected Twitch Account\nPlease Reboot Server",
+  "text.nlti.unlink_complete": "Unlinked Twitch Account",
+  "text.nlti.stop_complete": "NLTI Stopped",
+  "text.nlti.start_complete": "NLTI Started",
+  "text.nlti.reset_complete": "NLTI Reset",
+  "text.nlti.mob": "%s Has Spawned %s",
+  "text.nlti.potion": "%s Has Given Everyone %s For 10 Seconds",
+  "text.nlti.weather": "%s Set The Weather To %s",
+  "text.nlti.time": "%s Set Time To %s"
 }
